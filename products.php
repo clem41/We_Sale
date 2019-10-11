@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>We Sale ! Your Cart</title>
+<title>We Sale !</title>
 <head>
 	<link rel="stylesheet" href="css/main.css" />
 	<?php include'header.php';
 	?>
 </head>
 <body>
-	<p>Your cart is empty</p>
+	<p>il n'y a pas de produits disponibles pour le moment</p>
 </body>
 
 <footer>
