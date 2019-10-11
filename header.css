@@ -64,10 +64,9 @@ nav a:hover, nav span:hover{	/*when mouse on link*/
 }
 */
 .category{
-  width: 100%;
 	display: inline-block;
-  position:relative;
-  padding: 5px 10px -5px;
+    position:relative;
+    padding: 5px 10px -5px;
 }
 
 .category input[type=text]{
