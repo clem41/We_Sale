@@ -1,4 +1,4 @@
-<?php  //new PDO('mysql:host=localhost:dbname=dump','root','root')	?>
+<?php  //$bddnew PDO('mysql:host=localhost:dbname=dump','root','root')	?>
 
 <header><a id="headertitle" href="main.php">We sale</a>
 	<nav>
