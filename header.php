@@ -6,10 +6,14 @@
 	<nav>
 		<div class="category">
 			<ul class="category_nav">
-				<li><a href="main.html">Home</a></li>
-				<li><span class="product.php">Products</span></li>
-				<div class="withSeveralLinks">
-				</div>
+				<li><a href="main.php">Home</a></li>
+				<li>
+					<!--
+					<span class="product.php">Products</span></li>
+					<div class="withSeveralLinks">
+					</div>
+					-->
+					<a href="products.php">Products</a></li>
 				<li><a href="createAccountPage.php">Account</a></li>
 				<li><a href="cart.php">Cart</a></li>
 				<li><div class="login">
