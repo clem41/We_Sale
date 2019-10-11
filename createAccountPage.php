@@ -16,6 +16,7 @@
 </head>
 	
 <body>
+	<?php include ('header.php') ?>
 
  	<form> 
  		<label> <?php echo "lastName" ?> </label> <input type="text" name="lastName">
@@ -29,6 +30,8 @@
 	 	<label> <?php echo "confirmer mot de passe" ?></label><input type="text" name="confirmer mot de passe"><br>
 	 	<input type="button" value =" valider ">
  		
+		<?php include ('footer.php') ?>
+
  	</form>
 
 </body>
