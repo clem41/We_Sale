@@ -1,6 +1,8 @@
 <?php  //$bddnew PDO('mysql:host=localhost:dbname=dump','root','root')	?>
 
-<header><a id="headertitle" href="main.php">We sale</a>
+<header>   
+	<link rel="stylesheet" href="header.css" /> 
+	<a id="headertitle" href="main.php">We sale</a>
 	<nav>
 		<div class="category">
 			<ul class="category_nav">

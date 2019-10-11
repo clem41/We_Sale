@@ -2,15 +2,16 @@
 <html>
 <title>We Sale ! Your Cart</title>
 <head>
-	<link rel="stylesheet" href="css/main.css" />
-	<?php include'header.php';
-	?>
+	<link rel="stylesheet" href="main.css" />
 </head>
 <body>
+		<?php include'header.php';
+	?>
 	<p>Your cart is empty</p>
+		<?php include'footer.php';
+	?>
 </body>
 
 <footer>
-	<?php include'footer.php';
-	?>
+
 </footer>

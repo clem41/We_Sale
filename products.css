@@ -1,0 +1,24 @@
+*
+{
+    font-family: arial;
+}
+section
+{
+    margin: auto;
+}
+
+html{
+	background-color: white;
+}
+.article{
+		background-color: rgb(180,100,100);
+		border-style:dashed;
+		border-width:5px;
+		border-color: rgb(180,100,100);
+
+		height: 150px;
+		width: 100%;
+
+		text-decoration-color: white;
+
+}
