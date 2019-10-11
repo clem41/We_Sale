@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+   * {
+            box-sizing: border-box;
+        }
+ #container {
+            width: 180px;
+            margin: 0 auto;
+        }
+ body {
+            margin: 0;
+            padding: 0;
+         
+        } 
+form {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+        }
+input, button {
+            border: none;
+            outline: none;
+        }
+button {
+            height: 42px;
+            width: 42px;
+            cursor: pointer;
+            position: absolute;
+        }
+.bar{background:  #F9F0DA;}
+.bar input {
+            width: 100%;
+            height: 42px;
+            padding-left: 13px;
+            padding-right:46px;
+            border: 2px solid #C5464A;
+            border-radius: 5px 0 0 5px;
+            background: transparent;
+            top: 0;
+            right: 0;
+        }
+.bar button {
+            background: #C5464A;
+            border-radius: 0 5px 5px 0;
+            top: 0;
+            height: 42px;
+            width: 60px;
+            cursor: pointer;
+            position: absolute;
+        }
+.bar button:before {
+            content: "search";
+            font-size: 13px;
+            color: #F9F0DA;
+        }
+ 
+</style>
+<head>
+<title>search</title>
+</head>
+<body>
+<?php include 'header.php'?>
+<div id="container">
+<div class="bar">
+<input type="text" size="30"  placeholder="go for it">
+<button type="submit"></button>
+</div>
+</div>
+<?php include 'footer.php'?>
+</body>
+</html>
