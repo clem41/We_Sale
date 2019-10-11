@@ -1,15 +1,15 @@
-<?php  include 'data.php'	?>
+<?php  //include 'data.php'	?>
 
 <header><a id="headertitle" href="main.php">We sale</a>
 	<nav>
 		<div class="category">
 			<ul class="category_nav">
 				<li><a href="main.html">Home</a></li>
-				<li><span class="navtitle">Products</span></li>
+				<li><span class="product.php">Products</span></li>
 				<div class="withSeveralLinks">
 				</div>
-				<li><a href="account">Account</a></li>
-				<li><a href="cart">Cart</a></li>
+				<li><a href="createAccountPage.php">Account</a></li>
+				<li><a href="cart.php">Cart</a></li>
 				<li><div class="login">
 					<form action="account.php">
 						<input type="text" placeholder="Username" name="username">
