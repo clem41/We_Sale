@@ -1,4 +1,4 @@
-<?php  //include 'data.php'	?>
+<?php  //$bddnew PDO('mysql:host=localhost:dbname=dump','root','root')	?>
 
 <header><a id="headertitle" href="main.php">We sale</a>
 	<nav>
@@ -17,8 +17,8 @@
 						<button type="submit">Login</button>
 				</form>
 			</div></li>
-				<li><form action="product.php" method="GET">
-				<input id="search" type="text" placeholder="Search a product..."></form></li>
+				<li><form action="resultdisplay.php" method="GET">
+				<input id="search" name="name" type="text" placeholder="Search a product..."></form></li>
 			</ul>
 		</div>
 	</nav>
