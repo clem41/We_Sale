@@ -1,17 +1,11 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>
-		createAccountPage
-	</title>
+	<title>createAccountPage</title>
 	<link rel="stylesheet" href="createAccountPage.css" />
-
 </head>
-	
 <body>
-
-		<?php include('main.html') ?>
-	
+	<?php include("header.php") ?>
  	<form >
  		<p class="inscritpion">
 			 
@@ -38,6 +32,5 @@
  		
 			<p>
  	</form>
-	
 </body>
 </html>
