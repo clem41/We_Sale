@@ -1,0 +1,182 @@
+* 
+{ 
+    font-family: arial; 
+} 
+section 
+{ 
+    margin: auto; 
+} 
+footer
+{
+
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    width:100%;
+    margin-left: 0px;
+    display: inline-block;
+    vertical-align: bottom;
+    background-color: red;
+    height: 50px;
+
+}
+
+nav {
+    text-align: left;
+    background-color: cornflowerblue;
+}
+nav a, nav span{
+    color:black;
+    text-decoration: none;
+    transition:color linear 0.2s;
+}
+
+title
+{
+	background-color: yellow;
+	 color: rgb(240,96,204);
+}
+ 
+html{ 
+	background-color: white; 
+} 
+
+#headertitle {
+    font-size: 70px;
+    color: white;
+    text-decoration:none;
+}
+
+.article{ 
+		background-color: rgb(180,100,100); 
+		border-style:dashed; 
+		border-width:5px; 
+		border-color: rgb(180,100,100); 
+ 
+		height: 150px; 
+		width: 100%; 
+ 
+		text-decoration-color: white; 
+ 
+}
+body {
+    margin: 0px;
+    --aside-width: 200px;
+    --horizontal-margin:10px;
+    --picture-width:200px;
+}
+
+.menuCategory {
+    display: inline-block;
+    position:relative;
+    padding:5px 10px;
+
+}
+
+.menuCategory:hover .withSeveralLinks {
+    display: block;
+}
+
+/*
+
+header
+{
+    text-align: center;
+    width:100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-bottom: 5px;
+    height: 100px;
+    background-color: cornflowerblue;
+}
+
+#welcomeMainImage{
+    display: block;
+    max-width:100%;
+    max-height: calc(100vh - 150px);
+    margin: 5px auto;
+}
+
+html
+{
+    background-color: white;
+}
+
+
+.footerTampon{
+    height: 50px;
+}
+
+footer a
+{
+    color: green;
+    text-decoration:none;
+    vertical-align: center;
+}
+footer div
+{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    line-height: 50%;
+}
+
+
+nav a:hover, nav span:hover{
+    color:#ccc;
+}
+
+#headertitle {
+    font-size: 70px;
+    color: white;
+    text-decoration:none;
+}
+
+
+
+.withSeveralLinks {
+    display: none; 
+    position:absolute;   
+    left:-0px;
+    top:100%;
+    background-color: cornflowerblue;
+    padding:5px 10px;
+}
+
+
+
+.contactType {
+    font-weight: bold;
+}
+
+
+aside {
+    width: var(--aside-width);
+    padding: var(--horizontal-margin);
+    text-align: left;
+    box-sizing:border-box;
+
+    background-color: darkgray;
+    border-radius: 10px;
+    position: fixed;
+    top: 140px;
+    right: var(--horizontal-margin);
+
+}
+
+section {
+    margin:30px var(--horizontal-margin);
+    width: var(--section-width);
+    padding-right: calc(var(--aside-width) + var(--horizontal-margin) )
+}
+
+
+
+
+#recipeImage {
+    max-height: 200px;
+    width: var(--picture-width);
+    float:left;
+    margin-right: var(--horizontal-margin);
+}
