@@ -50,6 +50,17 @@ function getPictureName($productId)
 	where products.id= :productId';
 	return executeQuery($query,$params);
 }
+
+function getProductNameById($productId)
+//get the picture name (name.jpg) from a product ID
+{
+	$params = array('productId'=> $productId);
+	$query ='
+	select name 
+	from products
+	where products.id= :productId';
+	return executeQuery($query,$params);
+}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database

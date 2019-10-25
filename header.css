@@ -64,7 +64,7 @@ nav a:hover, nav span:hover{	/*when mouse on link*/
 }
 */
 .category{
- display: inline-block;
+ display: inline;
   position:relative;
   padding: 5px 10px -5px;
   width: 100%
