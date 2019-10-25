@@ -36,10 +36,10 @@ nav li{
 
 nav{
 	text-align: left;
-	background-color: #BC8F8F;	/*RosyBrown*/
+	background-color: rgb(180,100,100);
 }
 nav a, nav span{
-	color: tomato;
+	color: white;
 	text-decoration: none;
 	transition: color linear 0.2s;
 	justify-content: left;
@@ -65,8 +65,9 @@ nav a:hover, nav span:hover{	/*when mouse on link*/
 */
 .category{
 	display: inline-block;
-    position:relative;
-    padding: 5px 10px -5px;
+  position:relative;
+  padding: 5px 10px -5px;
+  width: 100%
 }
 
 .category input[type=text]{
@@ -128,17 +129,29 @@ body{
 
 footer
 {
-
-    position: fixed;
+  /*
+  position:absolute; 
+  padding-bottom:20px; 
+  padding-left:50%;  
+  padding-right:50%;
+  padding-top:20px; 
+  line-height:50px; 
+  color:rgb(255,255,255); 
+  background-color:rgb(180,100,100); 
+  border:0; 
+  white-space: nowrap;
+*/
+    position: absolute;
     bottom: 0px;
     left: 0px;
     text-align: center;
+    padding-top:20px;
     width:100%;
     margin-left: 0px;
-    /* display: inline-block;*/
     vertical-align: bottom;
-    background-color: #BC8F8F;
-    height: 50px;
+    background-color:rgb(180,100,100);
+    height: 80px;
+    color:white;
 
 }
 
@@ -148,14 +161,15 @@ footer
 
 footer a
 {
-    color: brown;
+    color: white;
     text-decoration:none;
     vertical-align: center;
 }
+
 footer div
 {
     width: 100%;
     height: 100%;
     display: inline-block;
-    line-height: 50%;
+    line-height: 60%;
 }

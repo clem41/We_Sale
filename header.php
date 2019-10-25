@@ -1,15 +1,21 @@
-<?php  include 'data.php'	?>
+<?php  //$bddnew PDO('mysql:host=localhost:dbname=dump','root','root')	?>
 
-<header><a id="headertitle" href="main.php">We sale</a>
+<header>   
+	<link rel="stylesheet" href="header.css" /> 
+	<a id="headertitle" href="main.php">We sale</a>
 	<nav>
 		<div class="category">
 			<ul class="category_nav">
-				<li><a href="main.html">Home</a></li>
-				<li><span class="navtitle">Products</span></li>
-				<div class="withSeveralLinks">
-				</div>
-				<li><a href="account">Account</a></li>
-				<li><a href="cart">Cart</a></li>
+				<li><a href="main.php">Home</a></li>
+				<li>
+					<!--
+					<span class="product.php">Products</span></li>
+					<div class="withSeveralLinks">
+					</div>
+					-->
+					<a href="products.php">Products</a></li>
+				<li><a href="createAccountPage.php">Account</a></li>
+				<li><a href="cart.php">Cart</a></li>
 				<li><div class="login">
 					<form action="account.php">
 						<input type="text" placeholder="Username" name="username">
@@ -17,8 +23,8 @@
 						<button type="submit">Login</button>
 				</form>
 			</div></li>
-				<li><form action="product.php" method="GET">
-				<input id="search" type="text" placeholder="Search a product..."></form></li>
+				<li><form action="resultdisplay.php" method="GET">
+				<input id="search" name="name" type="text" placeholder="Search a product..."></form></li>
 			</ul>
 		</div>
 	</nav>
