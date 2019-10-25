@@ -12,7 +12,7 @@ if (isset($_GET['search'])){
 <head>
     <title> We sale ! Page produits </title>
     
-    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="productCSS.css" />
     <link rel="stylesheet" href="css/product.css" />
 </head>
 <body>
