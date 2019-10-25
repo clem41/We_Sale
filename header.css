@@ -141,7 +141,7 @@ footer
   border:0; 
   white-space: nowrap;
 */
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     text-align: center;

@@ -38,7 +38,7 @@ li a:hover {
 </ul>
 <?php
 $name=$_GET[name]; 
-$bdd = new PDO('mysql:host=localhost;dbname=dump','root','root');
+//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','root');
    $res = $bdd->prepare("select * from products where name='$name'");
         $res->execute();
 		$products = $res->fetchAll();
