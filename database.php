@@ -1,20 +1,11 @@
 <?php
 
-function getOrderByType($orderType)
-{
-    $params = array('orderType' => $orderType);
-    $query = '
-        select o.*
-          from orders o
-          where o.Type = :orderType
-    ';
-    return executeQuery($query, $params);
 
     
     function executeQuery($query, $params)
 {
     //FIXME: change dbname by your own dbname
-    $bdd = new PDO('mysql:host=localhost;dbname=technoweb', 'root') ;
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root') ;
     try {
         $res = $bdd->prepare($query);
         $res->execute($params);
@@ -28,5 +19,18 @@ function getOrderByType($orderType)
         var_dump($e);
     }
 }
+function getOrderInCart()
+{
+    $query = "
+        select *
+          from orders 
+          where orders.type = 'CART'
+    ";
+    return executeQuery($query,NULL);
 }
-
+//wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+//***************************************************
+//Add your function here to interact with the database
+//*****************************************************
+//wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+?>

@@ -90,7 +90,7 @@ a.button{
 <div>
 <?php
 $name=$_GET['name'];
-$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
+//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
 
 //if(isset($_GET['Sort'], $_GET['SortDescending']))
 
