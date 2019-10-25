@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -21,7 +22,8 @@
 	else{
 		var_dump($listOfOrdersInCart);
 
-		$listOfProductsInCart = getAllOrderProductsByOrderId($listOfOrdersInCart['order_id']);
+		$listOfProductsInCart = getAllOrderProductsByOrderId($listOfOrdersInCart['id']);
+		var_dump($listOfProductsInCart);
 	}
 	?>
 
