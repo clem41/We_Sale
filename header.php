@@ -1,5 +1,6 @@
-<?php  //include_once database.php;
-//$bddnew PDO('mysql:host=localhost:dbname=dump','root','root')	?>
+<?php include_once 'database.php';
+
+?>
 
 <header>   
 	<link rel="stylesheet" href="header.css" /> 
