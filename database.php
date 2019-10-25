@@ -28,6 +28,16 @@ function getOrderInCart()
     ";
     return executeQuery($query,NULL);
 }
+function getAllOrderProductsByOrderId($orderId)
+{
+    $params = array('orderId' => $orderId);
+    $query = '
+        select *
+          from order_product
+          where order_product.order_id = :orderId
+    ';
+    return executeQuery($query, $params);
+}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database

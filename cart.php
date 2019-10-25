@@ -19,7 +19,9 @@
 		echo "Your cart is empty";
 	}
 	else{
-		echo "There are some products on cart";
+		var_dump($listOfOrdersInCart);
+
+		$listOfProductsInCart = getAllOrderProductsByOrderId($listOfOrdersInCart['order_id']);
 	}
 	?>
 
