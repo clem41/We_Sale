@@ -14,13 +14,16 @@
 		<?php include'header.php';
 	?>
 	</div>
-	<div class="category">
-	<p>Your cart is empty</p>
-	</div>
+	<?php $listOfOrdersInCart = getOrderInCart();
+	if ($listOfOrdersInCart==NULL){
+		echo "Your cart is empty";
+	}
+	else{
+		echo "There are some products on cart";
+	}
+	?>
+
 		<?php include'footer.php';
 	?>
 </body>
 
-<footer>
-
-</footer>
