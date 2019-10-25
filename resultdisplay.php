@@ -77,7 +77,7 @@ a.button{
 <body>
 <div class="category">
 <?php include 'header.php'?>
-<?php $name=$_GET[name];?>
+<?php $name=$_GET['name'];?>
 </div>
 <div class="category">
 <ul class="display">
@@ -89,9 +89,13 @@ a.button{
 </div>
 <div>
 <?php
-$name=$_GET[name];
-$bdd = new PDO('mysql:host=localhost;dbname=dump','root','root');
-$flag=$_GET[sort];
+$name=$_GET['name'];
+$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
+
+//if(isset($_GET['Sort'], $_GET['SortDescending']))
+
+$flag=$_GET['sort'];
+
    if($flag=="low"){
    $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
    }
@@ -107,6 +111,7 @@ $flag=$_GET[sort];
 	    if($num==0){
 			echo "Sorry,didn't find what you are looking for";
 			}
+
 ?>
 </div>
 <?php foreach ($products as $product)
