@@ -28,5 +28,9 @@ function getOrderInCart()
     ";
     return executeQuery($query,NULL);
 }
-
+//wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+//***************************************************
+//Add your function here to interact with the database
+//*****************************************************
+//wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 ?>
