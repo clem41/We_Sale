@@ -73,7 +73,7 @@ li.lel a:hover {
 				$response = $bdd->query('SELECT * FROM products' );
 			?>	
 				
-				<?php
+				
 
 				while ($article1 = $response->fetch()) 
 				{
@@ -102,8 +102,3 @@ li.lel a:hover {
 		?>
 	</footer>
 </body>
-
-<footer>
-	<?php include'footer.php';
-	?>
-</footer>

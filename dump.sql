@@ -140,7 +140,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `unit_price`, `range_id`, `
 (2, 'Iphone', 'The famous smartphone', 999.99, 2, '2019-10-25 14:53:14', '2019-10-25 14:53:14', 'iphone.jpg'),
 (3, 'Iwatch', 'The connected watch', 600, 3, '2019-10-25 14:53:14', '2019-10-25 14:53:14', 'iwatch.jpg'),
 (4, 'Chocapic Cereales', '500g of Chocapic Cereales', 29.99, 4, '2019-10-25 14:53:14', '2019-10-25 14:53:14', 'cereales.jpg'),
-(1, 'Sponge', 'A basic sponge', 9.99, 5, '2019-10-25 14:53:14', '2019-10-25 14:53:14', 'sponge.jpg');
+(5, 'Sponge', 'A basic sponge', 9.99, 5, '2019-10-25 14:53:14', '2019-10-25 14:53:14', 'sponge.jpg');
 
 -- --------------------------------------------------------
 
