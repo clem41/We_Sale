@@ -73,7 +73,7 @@ li.lel a:hover {
 				$response = $bdd->query('SELECT * FROM products' );
 			?>	
 				
-				
+				<?php
 
 				while ($article1 = $response->fetch()) 
 				{
