@@ -89,6 +89,9 @@ a.button{
 </div>
 <div>
 <?php
+$name=$_GET[name]; 
+//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','root');
+   $res = $bdd->prepare("select * from products where name='$name'");
 $name=$_GET['name'];
 //$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
 
