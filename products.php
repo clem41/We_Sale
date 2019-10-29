@@ -1,10 +1,10 @@
 <?php
-/*if (isset($_GET['search'])){
+if (isset($_GET['search'])){
     $recipeCode= $_GET['search'];
 } else {
     include 'main.php';
     die;
-}*/
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +60,9 @@ li.lel a:hover {
 		<div class="article">
 			<?php
 				$response = $bdd->query('SELECT * FROM products' );
+			?>	
 				
-				
-	 <?php include 'header.php'?>
+	 <?php include ('header.php') ?> 
 <nav>
 			<div class="ProduitCategory">
 			    <a href="search.html">Search</a>
@@ -79,7 +79,7 @@ li.lel a:hover {
 			</div>
 		</nav>
 <article>
-
+            <?php  
 				while ($article1 = $response->fetch()) 
 				{
 				
@@ -94,6 +94,7 @@ li.lel a:hover {
 					</p>
 				<?php
 				}
+
 
 				$response->closeCursor();
 				?>
