@@ -56,3 +56,7 @@
 		include'footer.php';
 		?>
 </body>
+
+<footer>
+
+</footer>
