@@ -21,14 +21,14 @@
 		 	<br> 
 		 	<input type="text" name="e-mail">
 		 	<br>
-		 	<label> mot de passe </label>
+		 	<label> password </label>
 		 	<br>
 		 	<input type="text" name="mot de passe">
 		 	<br>
-		 	<label> confirmer mot de passe </label>
+		 	<label> confirm your password </label>
 		 	<br>
-		 	<input type="text" name="confirmer mot de passe"><br><br>
-		 	<input type="button" value =" valider ">
+		 	<input type="text" name="confirm password"><br><br>
+		 	<input type="button" value =" validate ">
  		
 			<p>
  	</form>

@@ -1,0 +1,37 @@
+.boxProduct{
+padding-top: 600px;
+border-width: 2px;
+padding: 10px;
+display: inline;position:relative;
+width: 200%
+}
+section{
+	margin : auto;
+}
+body{
+	margin: auto;
+}
+img {
+	width: 120px;
+	height: 120px;
+	margin-left : 25px;
+}
+
+li{
+	display: inline-block;
+	padding-right: 30px;
+}
+.productTitle{
+	color : blue;
+	font-weight: bold;
+	font-size: 130%;
+
+}
+.productPrice{
+	color : red;
+	font-weight: bold;
+	font-size: 120%;
+	text-align : right;
+
+}
+
