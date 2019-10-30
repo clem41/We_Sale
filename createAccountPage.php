@@ -5,10 +5,13 @@
 	<link rel="stylesheet" href="createAccountPage.css" />
 </head>
 <body>
+
 	<?php include("header.php") ?>
+
  	<form >
+
  		<p class="inscritpion">
-			 
+ 			
 	 		<label> lastName </label>
 	 		<br>
 	 		<input type="text" name="lastName">
@@ -30,7 +33,7 @@
 		 	<input type="text" name="confirm password"><br><br>
 		 	<input type="button" value =" validate ">
  		
-			<p>
+		<p>
  	</form>
  	<?php include("footer.php") ?>
 </body>

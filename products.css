@@ -1,4 +1,5 @@
 *
+
 {
     font-family: arial;
 }
@@ -11,14 +12,36 @@ html{
 	background-color: white;
 }
 .article{
-		background-color: rgb(180,100,100);
+		background-color: white;
 		border-style:dashed;
 		border-width:5px;
-		border-color: rgb(180,100,100);
+		border-color: white;
 
 		width: 100%;
 
 		text-decoration-color: white;
 
+}
+.category{
+		display: block;
+	}
+ul.lel {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.lel {
+    float: left;
+}
+li.lel a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 16px;
+    background-color: #111;
+li.lel a:hover {
 }
 

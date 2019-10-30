@@ -1,3 +1,4 @@
+
 .boxProduct{
 padding-top: 600px;
 border-width: 2px;
@@ -34,4 +35,6 @@ li{
 	text-align : right;
 
 }
-
+.category{
+	display:block;
+	}
