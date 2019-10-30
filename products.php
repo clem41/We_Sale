@@ -1,11 +1,11 @@
-<?php
+<!-- 
 if (isset($_GET['search'])){
     $recipeCode= $_GET['search'];
 } else {
     include 'main.php';
     die;
 }
-?>
+-->
 
  
 <?php  
@@ -16,12 +16,11 @@ if (isset($_GET['search'])){
 	} 
  ?> 
  
- 
-
 
 <!DOCTYPE html>
 <html>
-	.category{
+<style>
+.category{
 		display: block;
 	}
 ul.lel {
@@ -43,6 +42,7 @@ li.lel a {
     background-color: #111;
 li.lel a:hover {
 }
+
 </style>
 <head>
     <title> We sale ! Page produits </title>

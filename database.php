@@ -2,10 +2,10 @@
 
 
     
-    function executeQuery($query, $params)
+function executeQuery($query, $params)
 {
     //FIXME: change dbname by your own dbname
-    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root') ;
+    $bdd = new PDO('mysql:host=localhost;dbname=dump', 'root') ;
     try {
         $res = $bdd->prepare($query);
         $res->execute($params);
@@ -23,7 +23,7 @@ function getOrderInCart()
 //detection of orders which are still in the cart
 {
     $query = "
-        select *
+        SELECT *
           from orders 
           where orders.type = 'CART'
     ";
@@ -33,7 +33,7 @@ function getAllOrderProductsByOrderId($orderId)
 {
     $params = array('orderId' => $orderId);
     $query = '
-        select *
+        SELECT *
           from order_products
           where order_products.order_id = :orderId
     ';
@@ -45,7 +45,7 @@ function getPictureName($productId)
 {
 	$params = array('productId'=> $productId);
 	$query ='
-	select image 
+	SELECT image 
 	from products
 	where products.id= :productId';
 	return executeQuery($query,$params);
@@ -56,7 +56,7 @@ function getProductNameById($productId)
 {
 	$params = array('productId'=> $productId);
 	$query ='
-	select name 
+	SELECT name 
 	from products
 	where products.id= :productId';
 	return executeQuery($query,$params);

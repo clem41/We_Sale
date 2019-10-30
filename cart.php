@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <style>
@@ -17,13 +16,14 @@
 		<?php include'header.php';
 	?>
 	</div>
-	<?php $listOfOrdersInCart = getOrderInCart();
-	if ($listOfOrdersInCart==NULL){
+		<?php $listOfOrdersInCart = getOrderInCart();
+		if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";
-	}
-	else{
+		}
+		else{
 		//var_dump($listOfOrdersInCart);
 		echo "Your cart";
+	
 		foreach($listOfOrdersInCart as $OrderInCart){
 			//echo $OrderInCart['id'];
 		
