@@ -1,15 +1,20 @@
 <?php
-
-
-    
-    function executeQuery($query, $params)
-{
-    //FIXME: change dbname by your own dbname
+try
+{    //FIXME: change dbname by your own dbname
 	//uncomment for mac emvironmemt
 	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	//uncomment for windows environnment
     $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
-    try {
+}
+catch(Exception $e)
+{
+        die('Erreur : '.$e->getMessage());
+}
+
+//*******************function to read and write************************    
+    function executeQuery($query, $params)
+{
+   global $bdd;
         $res = $bdd->prepare($query);
         $res->execute($params);
 
@@ -18,11 +23,15 @@
         $res->closeCursor();
 
         return $datas;
-    } catch (PDOException $e) {
-        var_dump($e);
-    }
+}
+function writeOnDatabase($input){
+
+//write on the
+$bdd->exec($input);
 }
 
+
+//***********************interact specifically with the bsd*******************************
 function getProductById($id){
 	$params = array('id'=>$id);
 	$query = 'SELECT * FROM products where id= :id';
@@ -103,9 +112,6 @@ function searchGoods($name)
 function addToCart($articleId,$quantity){
 		$product=getProductById($articleId);
 				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
-			
-			 
-			
 	
 	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
