@@ -54,6 +54,17 @@ function getPictureName($productId)
 	return executeQuery($query,$params);
 }
 
+function getProductPrice($productId)
+//get the picture name (name.jpg) from a product ID
+{
+	$params = array('productId'=> $productId);
+	$query ='
+	select unit_price 
+	from products
+	where products.id= :productId';
+	return executeQuery($query,$params);
+}
+
 function getProductNameById($productId)
 //get the picture name (name.jpg) from a product ID
 {
@@ -73,17 +84,6 @@ function getProductByNameGivenBySearch($string)
 
 function searchGoods($name)
 {
-	/*$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
-	   if($flag=="low"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
-   }
-   elseif($flag=="hight"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price desc");
-   	}
-   	else{
-   		$res = $bdd->prepare("select * from products where name like '%$name%'");
-   		}
-        $res->execute();*/
 		$res=getProductByNameGivenBySearch($name);
 		//var_dump($res);
 	  	$numberOfProductsFound=count($res);
