@@ -1,6 +1,9 @@
 .boxProduct{
+border-style:dashed;
+border-width:5px;
+border-color: rgb(180,100,100);
 padding-top: 600px;
-border-width: 2px;
+
 padding: 10px;
 display: inline;position:relative;
 width: 200%
@@ -33,5 +36,23 @@ li{
 	font-size: 120%;
 	text-align : right;
 
+}
+.button {
+	display:block;
+	margin: 0 auto;
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+	padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display:block;
+    font-size: 12px;
+    cursor: pointer;
+}
+a.button{
+	display:inline;
+    text-align: center;
+    text-decoration: none;
 }
 

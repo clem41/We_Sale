@@ -23,6 +23,8 @@
 	}
 	else{
 		//var_dump($listOfOrdersInCart);
+		//initalise the sub total to cost
+		$subtotal = 0.0;
 		echo "Your cart";?>
 		<br>
 		<?php
@@ -44,10 +46,16 @@
     		<p>Quantity :<?php echo($Product['quantity']);?>
     	
     			</div></li>
+    			<li><button class="button"><a class="button" href="cart.php">Delete</a></button></li>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
-    			echo($unitPriceProduct[0]['unit_price']);?> USD
+    			echo($unitPriceProduct[0]['unit_price']);
+    			?> USD
+
+    			<?php $subtotal = ($subtotal+ (double)$Product['quantity']*(double)($unitPriceProduct[0]['unit_price']));
+    			?></div>
+
     			</div>
 
 			</div>
@@ -55,7 +63,7 @@
 		}
 	}?>
 	<br>
-	<div class="productPrice">Total : USD</div>
+	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
 <?php
 		include'footer.php';
 		?>
