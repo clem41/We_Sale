@@ -6,9 +6,9 @@
 {
     //FIXME: change dbname by your own dbname
 	//uncomment for mac emvironmemt
-	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	//uncomment for windows environnment
-    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
     try {
         $res = $bdd->prepare($query);
         $res->execute($params);
