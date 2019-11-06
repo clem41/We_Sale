@@ -35,6 +35,7 @@
 	
 		foreach($listOfProductsInCart as $Product){
 			//var_dump($Product); ?>
+			<br>
 			<div class="boxProduct">
 				        <?php $imageProduct = getPictureName($Product['product_id']);?> 
     		<li><img id="recipeImage" src="<?php echo $imageProduct[0]['image']?>"/></li>
@@ -46,7 +47,7 @@
     		<p>Quantity :<?php echo($Product['quantity']);?>
     	
     			</div></li>
-    			<li><button class="button"><a class="button" href="cart.php">Delete</a></button></li>
+    			<li><button class="buttonCartCheck" href="cart.php">Delete</button></li>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
@@ -64,7 +65,7 @@
 	}?>
 	<br>
 	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
-	<button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
+	<br><button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
 <?php
 		include'footer.php';
 		?>

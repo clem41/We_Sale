@@ -22,6 +22,12 @@
         var_dump($e);
     }
 }
+
+function getProductById($id){
+	$params = array('id'=>$id);
+	$query = 'SELECT * FROM products where id= :id';
+    return executeQuery($query, $params);
+}
 function getOrderInCart()
 //detection of orders which are still in the cart
 {
@@ -93,6 +99,15 @@ function searchGoods($name)
 		<?php
 		return $res;
 }
+
+function addToCart($articleId,$quantity){
+		$product=getProductById($articleId);
+				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+			
+			 
+			
+	
+	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database
