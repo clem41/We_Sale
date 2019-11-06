@@ -37,6 +37,18 @@ li{
 	text-align : right;
 
 }
+.buttonCartCheck{
+	align-items: right;
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:8px;
+	background:#d34836;
+	font:bold 13px Arial;
+	color:#fff;
+	position:relative;
+	left:50%;
+	float:right;
+}
 .button {
 	display:block;
 	margin: 0 auto;
@@ -55,4 +67,5 @@ a.button{
     text-align: center;
     text-decoration: none;
 }
+
 

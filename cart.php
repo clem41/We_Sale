@@ -64,6 +64,7 @@
 	}?>
 	<br>
 	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
+	<button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
 <?php
 		include'footer.php';
 		?>
