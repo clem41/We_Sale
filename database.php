@@ -6,9 +6,9 @@
 {
     //FIXME: change dbname by your own dbname
 	//uncomment for mac emvironmemt
-	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	//uncomment for windows environnment
-    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
     try {
         $res = $bdd->prepare($query);
         $res->execute($params);
@@ -71,7 +71,7 @@ function getProductByNameGivenBySearch($string)
 	return executeQuery($query,$params);
 }
 
-function searchGoods($name,$flag)
+function searchGoods($name)
 {
 	/*$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	   if($flag=="low"){
@@ -85,12 +85,13 @@ function searchGoods($name,$flag)
    		}
         $res->execute();*/
 		$res=getProductByNameGivenBySearch($name);
-		$products = $res->fetchAll();
-	  	$num=count($products);
-	    if($num==0){
+		//var_dump($res);
+	  	$numberOfProductsFound=count($res);
+	    if($numberOfProductsFound==0){
 			echo "Sorry,didn't find what you are looking for";
 			}?>
-		return $products;
+		<?php
+		return $res;
 }
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************

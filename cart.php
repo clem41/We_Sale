@@ -23,7 +23,9 @@
 	}
 	else{
 		//var_dump($listOfOrdersInCart);
-		echo "Your cart";
+		echo "Your cart";?>
+		<br>
+		<?php
 		foreach($listOfOrdersInCart as $OrderInCart){
 			//echo $OrderInCart['id'];
 		
