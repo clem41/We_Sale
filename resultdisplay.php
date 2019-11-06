@@ -90,47 +90,8 @@ a.button{
 <div>
 <?php
 $name=$_GET['name'];
-//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
-
-//if(isset($_GET['Sort'], $_GET['SortDescending']))
-
-$flag=$_GET['sort'];
-
-   if($flag=="low"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
-   }
-   elseif($flag=="hight"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price desc");
-   	}
-   	else{
-   		$res = $bdd->prepare("select * from products where name like '%$name%'");
-   		}
-$name=$_GET[name]; 
-//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','root');
-   $res = $bdd->prepare("select * from products where name='$name'");
-$name=$_GET['name'];
-//$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
-
-//if(isset($_GET['Sort'], $_GET['SortDescending']))
-
-$flag=$_GET['sort'];
-
-   if($flag=="low"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
-   }
-   elseif($flag=="hight"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price desc");
-   	}
-   	else{
-   		$res = $bdd->prepare("select * from products where name like '%$name%'");
-   		}
-        $res->execute();
-		$products = $res->fetchAll();
-	  	$num=count($products);
-	    if($num==0){
-			echo "Sorry,didn't find what you are looking for";
-			}
-
+//$flag=$_GET['sort'];
+$products=searchGoods($name);
 ?>
 </div>
 <?php foreach ($products as $product)

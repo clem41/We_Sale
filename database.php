@@ -5,7 +5,10 @@
     function executeQuery($query, $params)
 {
     //FIXME: change dbname by your own dbname
-    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root') ;
+	//uncomment for mac emvironmemt
+	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	//uncomment for windows environnment
+    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
     try {
         $res = $bdd->prepare($query);
         $res->execute($params);
@@ -59,7 +62,35 @@ function getProductNameById($productId)
 	select name 
 	from products
 	where products.id= :productId';
+	return executeQuery($query,$params);}
+
+function getProductByNameGivenBySearch($string)
+{
+	$params = array('string'=> $string);
+	$query='select * from products where name like :string';
 	return executeQuery($query,$params);
+}
+
+function searchGoods($name,$flag)
+{
+	/*$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	   if($flag=="low"){
+   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
+   }
+   elseif($flag=="hight"){
+   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price desc");
+   	}
+   	else{
+   		$res = $bdd->prepare("select * from products where name like '%$name%'");
+   		}
+        $res->execute();*/
+		$res=getProductByNameGivenBySearch($name);
+		$products = $res->fetchAll();
+	  	$num=count($products);
+	    if($num==0){
+			echo "Sorry,didn't find what you are looking for";
+			}?>
+		return $products;
 }
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
