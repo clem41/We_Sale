@@ -98,7 +98,8 @@ $products=searchGoods($name);
 {?>
   <div class="img">
     <a target="_blank" href="www.baidu.com">
-      <img src="<?php echo $product['name']?>.jpg" alt="图片文本描述" width="300px" height="400px">
+	  <?php $imageProduct = getPictureName($product['id']);?> 
+      <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
     </a>
     <div class="desc">
 	<?php		

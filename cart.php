@@ -34,9 +34,9 @@
 		foreach($listOfProductsInCart as $Product){
 			//var_dump($Product); ?>
 			<div class="boxProduct">
-				        <?php $imageProduct = getPictureName($Product['product_id']);?> 
+				        <?php $imageProduct = getPictureName($Product['id']);?> 
     		<li><img id="recipeImage" src="<?php echo $imageProduct[0]['image']?>"/></li>
-    			<?php $nameProduct = getProductNamebyId($Product['product_id']) ;
+    			<?php $nameProduct = getProductNamebyId($Product['id']) ;
     			?>
     		<li><div class="productTitle">
     				<?php  echo ($nameProduct[0]['name']);?>
