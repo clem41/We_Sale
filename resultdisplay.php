@@ -27,7 +27,7 @@ $products=searchGoods($name);
 <?php foreach ($products as $product)
 {?>
   <div class="img">
-    <a target="_blank" href="www.baidu.com">
+    <a target="_blank" href="products.php?name=<?php echo $product['name']?>">
 	  <?php $imageProduct = getPictureName($product['id']);?> 
       <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
     </a>

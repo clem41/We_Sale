@@ -22,14 +22,20 @@
 <div>
 <?php
 $name=$_GET['name'];
-//$flag=$_GET['sort'];
+$flag=0;
+if($name!=""){
+	$flag=1;
+	}
 $products=searchGoods($name);
 ?>
 </div>
-<?php foreach ($products as $product)
+<?php 
+switch($flag){
+	case 0:
+foreach ($products as $product)
 {?>
   <div class="img">
-    <a target="_blank" href="www.baidu.com">
+    <a target="_blank" href="products.php?name=<?php echo $product['name']?>">
 	  <?php $imageProduct = getPictureName($product['id']);?> 
       <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
     </a>
@@ -40,10 +46,31 @@ $products=searchGoods($name);
 		echo $product['unit_price'];
       ?>
 <button class="button"><a class="button" href="cart.php">add to cart</a></button>
+</div>
+</div>
+<?php }break;
+  case 1:
+  foreach ($products as $product)
+{?>
+<div class="image">
+<a target="_blank" href="products.php?name=<?php echo $product['name']?>">
+	  <?php $imageProduct = getPictureName($product['id']);?> 
+      <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
+</a> 
+</div>
+ <div class="description">
+	<?php		
+		echo $product['name'];
+		echo "<br>";
+		echo $product['description'];
+		echo "<br>";
+		echo $product['unit_price'];
+      ?>
+<button class="button2"><a class="button" href="cart.php">add to cart</a></button>
 	</div>
-	
-	   </div>
+<?php }break;?>
 <?php }?>
+
 <?php include 'footer.php'?>
 </body>
 </html>

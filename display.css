@@ -4,9 +4,6 @@ div.img {
     float: left;
     width: 180px;
 }
-display.category{
-	display:block;
-	}
 div.img:hover {
     border: 1px solid #777;
 }
@@ -15,6 +12,9 @@ div.img img {
     height: 150px;
 }
 
+display.category{
+	display:block;
+	}
 div.desc {
     padding: 15px;
     text-align: center;
@@ -49,21 +49,44 @@ li.display a {
 li.display a:hover {
     background-color: #111;
 }
-.button {
+.button{
 	display:block;
-	margin: 0 auto;
+	margin:0 auto;
     background-color: #e7e7e7;
     color: black;
     border: none;
 	padding: 4px 8px;
-    text-align: center;
-    text-decoration: none;
+    text-decoration:none;
     display:block;
     font-size: 12px;
     cursor: pointer;
 }
+.button2{
+   	display:block;
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+	padding: 4px 8px;
+    text-decoration:none;
+    display:block;
+    font-size: 12px;
+    cursor: pointer;}
 a.button{
 	display:inline;
-    text-align: center;
-    text-decoration: none;
+    text-decoration:none;
+}
+div.description{
+	margin-top:80px;
+    padding: 15px;
+	flaot:left;
+}
+
+div.image {
+    margin: 5px;
+    float: left;
+    width: 360px;
+}
+div.image img {
+    width: 100%;
+    height: 300px;
 }
