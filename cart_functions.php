@@ -1,6 +1,6 @@
 <?php  
 	
-	function addToCart($articleId){
+	/*function addToCart($articleId){
 		$bdd = new PDO('mysql:host=localhost;dbname=dump','root','');
 		$req = 'SELECT * FROM products where id='.$articleId ; 
 		echo($req); 
@@ -20,5 +20,5 @@
 		$response->closeCursor(); 
 		$response1->closeCursor(); 	 
 	}
-?>
+?>*/
 	

@@ -1,15 +1,20 @@
 <?php
+try
+{    //FIXME: change dbname by your own dbname
+	//uncomment for mac emvironmemt
+	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	//uncomment for windows environnment
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
+}
+catch(Exception $e)
+{
+        die('Erreur : '.$e->getMessage());
+}
 
-
-    
+//*******************function to read and write************************    
     function executeQuery($query, $params)
 {
-    //FIXME: change dbname by your own dbname
-	//uncomment for mac emvironmemt
-	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
-	//uncomment for windows environnment
-    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
-    try {
+   global $bdd;
         $res = $bdd->prepare($query);
         $res->execute($params);
 
@@ -18,9 +23,19 @@
         $res->closeCursor();
 
         return $datas;
-    } catch (PDOException $e) {
-        var_dump($e);
-    }
+}
+function writeOnDatabase($input){
+
+//write on the
+$bdd->exec($input);
+}
+
+
+//***********************interact specifically with the bsd*******************************
+function getProductById($id){
+	$params = array('id'=>$id);
+	$query = 'SELECT * FROM products where id= :id';
+    return executeQuery($query, $params);
 }
 function getOrderInCart()
 //detection of orders which are still in the cart
@@ -54,6 +69,17 @@ function getPictureName($productId)
 	return executeQuery($query,$params);
 }
 
+function getProductPrice($productId)
+//get the picture name (name.jpg) from a product ID
+{
+	$params = array('productId'=> $productId);
+	$query ='
+	select unit_price 
+	from products
+	where products.id= :productId';
+	return executeQuery($query,$params);
+}
+
 function getProductNameById($productId)
 //get the picture name (name.jpg) from a product ID
 {
@@ -73,17 +99,6 @@ function getProductByNameGivenBySearch($string)
 
 function searchGoods($name)
 {
-	/*$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
-	   if($flag=="low"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price");
-   }
-   elseif($flag=="hight"){
-   $res = $bdd->prepare("select * from products where name like '%$name%' order by unit_price desc");
-   	}
-   	else{
-   		$res = $bdd->prepare("select * from products where name like '%$name%'");
-   		}
-        $res->execute();*/
 		$res=getProductByNameGivenBySearch($name);
 		//var_dump($res);
 	  	$numberOfProductsFound=count($res);
@@ -93,6 +108,12 @@ function searchGoods($name)
 		<?php
 		return $res;
 }
+
+function addToCart($articleId,$quantity){
+		$product=getProductById($articleId);
+				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+	
+	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database
