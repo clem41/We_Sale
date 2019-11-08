@@ -21,23 +21,23 @@ session_start()
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title> We sale ! Page produits </title>
-    
-    
-	<link rel="stylesheet" href="display.css" />
-</head>
-<body>
-	<div class="category">
-<?php include 'header.php'; 
+<?php 
 if (!empty($_GET['page'])) {
-	if($_GET['page'] === 'products') {
-		include('products.php');
-	} else {
-		include('main.php');	
-	}
+  if($_GET['page'] === 'products') {
+    include('products.php');
+  } 
+  elseif($_GET['page'] === 'account') {
+    include('createAccountPage.php');
+  } 
+  elseif ($_GET['page'] === 'cart') {
+    include('cart.php');
+  }
+  else {
+    include('main.php');
+
+  }
 } else {
-	include(main.php);
+  include(main.php);
 }
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
 ?>
@@ -74,7 +74,7 @@ if (!empty($_GET['page'])) {
 // to get data from database (if needed)
 
 // add view display possibly using data from database
-	
+  
 ?>
 
 <?php include 'footer.php'?>

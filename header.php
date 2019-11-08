@@ -1,6 +1,4 @@
-<?php include_once 'database.php';
 
-?>
 
 <header>   
 	<link rel="stylesheet" href="header.css" /> 
@@ -16,12 +14,12 @@
 					</div>
 					-->
 					<a href="index.php?page=products">Products</a></li>
-				<li><a href="createAccountPage.php">Account</a></li>
-				<li><a href="cart.php">Cart</a></li>
+				<li><a href="index.php?page=account">Account</a></li>
+				<li><a href="index.php?page=cart">Cart</a></li>
 				<li><div class="login">
 					<form action="checkUser.php" method="post">
 						<input type="text" placeholder="Username" name="username">
-						<input type="text" placeholder="Password" name="psw">
+						<input type="Password" placeholder="Password" name="psw">
 						<button type="submit">Login</button>
 				</form>
 			</div></li>
