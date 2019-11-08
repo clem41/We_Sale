@@ -6,29 +6,26 @@
 </head>
 <body>
 	<?php include("header.php") ?>
- 	<form >
+ 	<form action = "insert_update_into_db.php" method = "post">
  		<p class="inscritpion">
 			 
-	 		<label> lastName </label>
-	 		<br>
-	 		<input type="text" name="lastName">
-		 	<br>
-		 	<label>	name </label>
+	 		
+		 	<label>	your whole name </label>
 		 	<br> 
 		 	<input type="text" name="name">
 		 	<br>
-		 	<label> e-mail </label>
+		 	<label> email </label>
 		 	<br> 
-		 	<input type="text" name="e-mail">
+		 	<input type="text" name="email">
 		 	<br>
 		 	<label> password </label>
 		 	<br>
-		 	<input type="text" name="mot de passe">
+		 	<input type="text" name="password">
 		 	<br>
 		 	<label> confirm your password </label>
 		 	<br>
 		 	<input type="text" name="confirm password"><br><br>
-		 	<input type="button" value =" validate ">
+		    <input type="submit">
  		
 			<p>
  	</form>
