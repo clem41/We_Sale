@@ -8,18 +8,7 @@ else{
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title> We sale ! Page produits </title>
-    
-    <link rel="stylesheet" href="productCSS.css" />
-	<link rel="stylesheet" href="display.css" />
-</head>
-<body>
-	<div class="category">
-<?php include 'header.php'?>
-<?php $name=$_GET['name'];
+<?php
     if(isset($_POST['Product'])){
       addToCart($POST['prodId']);
       echo("Your product was added in the cart");
@@ -38,6 +27,7 @@ else{
 ?>
 </div>
 <?php 
+$products=searchGoods($name);
 switch($flag){
 	case 0:
 foreach ($products as $product)
@@ -79,8 +69,4 @@ foreach ($products as $product)
 <?php }break;?>
 <?php }?>
 
-<?php include 'footer.php'?>
-</body>
-</html>
-$products=searchGoods($name);
-<button class="button2"><a class="button" href="products.php">add to cart</a></button>
+

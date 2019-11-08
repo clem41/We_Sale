@@ -3,7 +3,7 @@
 session_start()
 
 //TODO include database.php file
-mysql_select_db($bd_projet) or DIE('Error: database name is not available');
+//mysql_select_db($bd_projet) or DIE('Error: database name is not available');
 
 ?>
 
@@ -18,7 +18,27 @@ mysql_select_db($bd_projet) or DIE('Error: database name is not available');
 //TODO (in the next step) control user access
 
 //TODO get page parameter ($_GET['page'] or $_POST['page']) and assign it into $page variable
-
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title> We sale ! Page produits </title>
+    
+    
+	<link rel="stylesheet" href="display.css" />
+</head>
+<body>
+	<div class="category">
+<?php include 'header.php'; 
+if (!empty($_GET['page'])) {
+	if($_GET['page'] === 'products') {
+		include('products.php');
+	} else {
+		include('main.php');	
+	}
+} else {
+	include(main.php);
+}
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
 ?>
 
@@ -54,8 +74,9 @@ mysql_select_db($bd_projet) or DIE('Error: database name is not available');
 // to get data from database (if needed)
 
 // add view display possibly using data from database
-
-// TODO insert the end html envelope (</body></html>)
+	
 ?>
 
-?>
+<?php include 'footer.php'?>
+</body>
+</html>

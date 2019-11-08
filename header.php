@@ -15,7 +15,7 @@
 					<div class="withSeveralLinks">
 					</div>
 					-->
-					<a href="products.php">Products</a></li>
+					<a href="index.php?page=products">Products</a></li>
 				<li><a href="createAccountPage.php">Account</a></li>
 				<li><a href="cart.php">Cart</a></li>
 				<li><div class="login">
