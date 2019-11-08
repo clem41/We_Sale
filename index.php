@@ -1,12 +1,18 @@
 <?php
 //TODO start session
+session_start()
 
-//TODO include bd_projet.php file
+//TODO include database.php file
+mysql_select_db($bd_projet) or DIE('Error: database name is not available');
+
+?>
 
 <?php
 //TODO assign database connexion into $database variable
 
+
 //TODO include checkUser.php file
+?>
 
 <?php
 //TODO (in the next step) control user access
@@ -14,6 +20,7 @@
 //TODO get page parameter ($_GET['page'] or $_POST['page']) and assign it into $page variable
 
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
+?>
 
 <?php
 
@@ -27,6 +34,7 @@
 // TODO insert the start html envelope (<html><head>....</head><body>
 
 // TODO using $page decide to include header.php
+?>
 
 <?php
 
@@ -34,6 +42,7 @@
 
 //TODO if 'view/'.$page'.php' exists then include it (use file_exists($filename) function)
 //           else include 'view/main.php' (it has to exist)
+?>
 
 <?php
 
@@ -47,5 +56,6 @@
 // add view display possibly using data from database
 
 // TODO insert the end html envelope (</body></html>)
+?>
 
 ?>
