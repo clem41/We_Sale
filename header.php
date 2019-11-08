@@ -1,5 +1,4 @@
-<?php include_once 'database.php';
-
+<?php //include_once 'database.php';
 ?>
 
 <header>   

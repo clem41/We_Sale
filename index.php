@@ -4,20 +4,24 @@ session_start()
 
 //TODO include database.php file
 mysql_select_db($bd_projet) or DIE('Error: database name is not available');
+include_once 'database.php';
 
 ?>
 
 <?php
 //TODO assign database connexion into $database variable
-
+$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root');
 
 //TODO include checkUser.php file
+include('checkUser.inc.php')
+
 ?>
 
 <?php
 //TODO (in the next step) control user access
 
 //TODO get page parameter ($_GET['page'] or $_POST['page']) and assign it into $page variable
+
 
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
 ?>
@@ -45,7 +49,6 @@ mysql_select_db($bd_projet) or DIE('Error: database name is not available');
 ?>
 
 <?php
-
 //create one php file for each view to manage on the website (don't forget to create on main.php view)
 
 //TODO use 
@@ -56,6 +59,4 @@ mysql_select_db($bd_projet) or DIE('Error: database name is not available');
 // add view display possibly using data from database
 
 // TODO insert the end html envelope (</body></html>)
-?>
-
 ?>
