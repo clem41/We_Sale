@@ -1,6 +1,19 @@
 
+<style>
+.category{
+	display:block;
+	}
+</style>
+<title>We Sale ! Your Cart</title>
+<head>
+	<link rel="stylesheet" href="main.css" />
+
+</head>
+<body>
+		<link rel="stylesheet" href="cart.css" />
 <div class="category">
-		
+		<?php include'header.php';
+	?>
 	</div>
 	<?php $listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
@@ -30,11 +43,9 @@
     				<?php  echo ($nameProduct[0]['name']);?>
     			</div>
     		<p>Quantity :<?php echo($Product['quantity']);?>
-    	/
+    	
     			</div></li>
-    			<div class="li">
     			<li><button class="buttonCartCheck" href="cart.php">Delete</button></li>
-    		</div>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
