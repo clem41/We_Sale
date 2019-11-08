@@ -1,11 +1,15 @@
 <?php
 //TODO start session
+session_start()
 
-//TODO include bd_projet.php file
+//TODO include database.php file
+mysql_select_db($bd_projet) or DIE('Error: database name is not available');
+
 ?>
 
 <?php
 //TODO assign database connexion into $database variable
+
 
 //TODO include checkUser.php file
 ?>
