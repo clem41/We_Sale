@@ -2,9 +2,9 @@
 try
 {    //FIXME: change dbname by your own dbname
 	//uncomment for mac emvironmemt
-	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	//uncomment for windows environnment
-    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
+    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
 }
 catch(Exception $e)
 {
@@ -125,8 +125,27 @@ function addToCart($articleId){
 	}
 	else{
 		$product=getProductById($articleId);
+<<<<<<< HEAD
 				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].",'".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 		writeOnDatabase($request);
+=======
+				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+	
+	}
+	
+
+	
+function logIn($name){
+	$params = array('name'=> $name);
+	$query="select password from users where username='$name'";
+	return executeQuery($query,$params);
+	}
+	
+function selectUserByUsername($name){
+	$params = array('name'=> $name);
+	$query="select * from users where username='$name'";
+	return executeQuery($query,$params);
+>>>>>>> logIN
 	}
 }
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
