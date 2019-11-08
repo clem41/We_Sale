@@ -47,3 +47,5 @@
 // add view display possibly using data from database
 
 // TODO insert the end html envelope (</body></html>)
+
+?>
