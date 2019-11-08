@@ -1,3 +1,13 @@
+<?php
+if(isset($_GET['name'])){
+	$flag = 1;
+}
+else{
+	$flag = 0;
+	$name='';
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +19,7 @@
 <body>
 	<div class="category">
 <?php include 'header.php'?>
-<?php $name=$_GET['name'];?>
+
 </div>
 <div class="category">
 <ul class="display">
@@ -21,15 +31,9 @@
 </div>
 <div>
 <?php
-$name=$_GET['name'];
-$flag=0;
-if($name!=""){
-	$flag=1;
-	}
+
 $products=searchGoods($name);
-?>
-</div>
-<?php 
+
 switch($flag){
 	case 0:
 foreach ($products as $product)
