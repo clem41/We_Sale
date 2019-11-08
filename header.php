@@ -19,9 +19,9 @@
 				<li><a href="createAccountPage.php">Account</a></li>
 				<li><a href="cart.php">Cart</a></li>
 				<li><div class="login">
-					<form action="account.php">
+					<form action="checkUser.php" method="post">
 						<input type="text" placeholder="Username" name="username">
-						<input type="text" placeholder="Password" name="psw">
+						<input type="password" placeholder="Password" name="psw">
 						<button type="submit">Login</button>
 				</form>
 			</div></li>

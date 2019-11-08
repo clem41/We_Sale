@@ -114,6 +114,17 @@ function addToCart($articleId,$quantity){
 				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
+function logIn($name){
+	$params = array('name'=> $name);
+	$query="select password from users where username='$name'";
+	return executeQuery($query,$params);
+	}
+	
+function selectUserByUsername($name){
+	$params = array('name'=> $name);
+	$query="select * from users where username='$name'";
+	return executeQuery($query,$params);
+	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database
