@@ -110,11 +110,25 @@ function searchGoods($name)
 		return $res;
 }
 
-function addToCart($articleId,$quantity){
+function addToCart($articleId){
+	$listOfOrdersInCart = getOrderInCart();
+	if ($listOfOrdersInCart==NULL){
+		//if there isn"t any order in cart, we should create a new order
+		$request = "INSERT INTO `orders` (`type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) VALUES
+		('CART', 'CART', 149.52, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+		writeOnDatabase($request);
+
+		//we add the product on the database
 		$product=getProductById($articleId);
-				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
-	
+		$listOfOrdersInCart = getOrderInCart();
+		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].", ".$article1['id'].", '1', ".$article1['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
+	else{
+		$product=getProductById($articleId);
+				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].",'".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		writeOnDatabase($request);
+	}
+}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database

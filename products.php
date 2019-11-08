@@ -9,7 +9,11 @@
 <body>
 	<div class="category">
 <?php include 'header.php'?>
-<?php $name=$_GET['name'];?>
+<?php $name=$_GET['name'];
+    if(isset($_POST['Product'])){
+      addToCart($POST['prodId']);
+      echo("Your product was added in the cart");
+    }?>
 </div>
 <div class="category">
 <ul class="display">
@@ -45,7 +49,8 @@ foreach ($products as $product)
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button"><a class="button" href="cart.php">add to cart</a></button>
+  <input id="prodId" name="prodId" type="hidden" value="<?php echo $product['id']?>">
+<button class="button"><a class="button" name='addProduct' type = "submit" href="products.php">add to cart</a></button>
 </div>
 </div>
 <?php }break;
@@ -66,7 +71,7 @@ foreach ($products as $product)
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button2"><a class="button" href="cart.php">add to cart</a></button>
+<button class="button2"><a class="button" href="products.php">add to cart</a></button>
 	</div>
 <?php }break;?>
 <?php }?>
