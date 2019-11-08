@@ -27,6 +27,7 @@ catch(Exception $e)
 function writeOnDatabase($input){
 
 //write on the
+	global $bdd;
 $bdd->exec($input);
 }
 
