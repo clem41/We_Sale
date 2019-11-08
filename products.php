@@ -1,3 +1,13 @@
+<?php
+if(isset($_GET['name'])){
+	$flag = 1;
+}
+else{
+	$flag = 0;
+	$name='';
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +35,6 @@
 </div>
 <div>
 <?php
-$name=$_GET['name'];
-$flag=0;
-if($name!=""){
-	$flag=1;
-	}
-$products=searchGoods($name);
 ?>
 </div>
 <?php 
@@ -71,7 +75,6 @@ foreach ($products as $product)
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button2"><a class="button" href="products.php">add to cart</a></button>
 	</div>
 <?php }break;?>
 <?php }?>
@@ -79,3 +82,5 @@ foreach ($products as $product)
 <?php include 'footer.php'?>
 </body>
 </html>
+$products=searchGoods($name);
+<button class="button2"><a class="button" href="products.php">add to cart</a></button>
