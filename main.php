@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="header.css" />
 </head>
 <body>
-	<?php include 'header.php' ?>
 
 	<section>
 		<div href="main.html">

@@ -2,16 +2,16 @@
 try
 {    //FIXME: change dbname by your own dbname
 	//uncomment for mac emvironmemt
-	$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
+	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
 	//uncomment for windows environnment
-    //$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
 }
 catch(Exception $e)
 {
         die('Erreur : '.$e->getMessage());
 }
 
-//*******************function to read and write************************    
+//*******************function to read and write************************//   
     function executeQuery($query, $params)
 {
    global $bdd;
@@ -32,7 +32,7 @@ $bdd->exec($input);
 }
 
 
-//***********************interact specifically with the bsd*******************************
+//***********************interact specifically with the bsd*******************************//
 function getProductById($id){
 	$params = array('id'=>$id);
 	$query = 'SELECT * FROM products where id= :id';
@@ -110,6 +110,7 @@ function searchGoods($name)
 		return $res;
 }
 
+/*
 function addToCart($articleId){
 	$listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
@@ -132,8 +133,7 @@ function addToCart($articleId){
 				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
-	
-
+*/
 	
 function logIn($name){
 	$params = array('name'=> $name);
@@ -145,8 +145,6 @@ function selectUserByUsername($name){
 	$params = array('name'=> $name);
 	$query="select * from users where username='$name'";
 	return executeQuery($query,$params);
->>>>>>> logIN
-	}
 }
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************

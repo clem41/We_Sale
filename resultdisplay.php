@@ -5,10 +5,8 @@
 <link rel="stylesheet" href="display.css" />
 </head>
 <body>
-<div class="category">
-<?php include 'header.php'?>
-<?php $name=$_GET['name'];?>
-</div>
+<?php
+$name=$_POST['name'];?>
 <div class="category">
 <ul class="display">
   <li class="display"><a class="active" href="main.php">Back to main</a></li>
@@ -19,7 +17,7 @@
 </div>
 <div>
 <?php
-$name=$_GET['name'];
+$name=$_POST['name'];
 //$flag=$_GET['sort'];
 $products=searchGoods($name);
 ?>
@@ -27,7 +25,7 @@ $products=searchGoods($name);
 <?php foreach ($products as $product)
 {?>
   <div class="img">
-    <a target="_blank" href="products.php?name=<?php echo $product['name']?>">
+    <a target="_blank" href="index.php?page=products&name=<?php echo $product['name']?>">
 	  <?php $imageProduct = getPictureName($product['id']);?> 
       <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
     </a>
@@ -37,7 +35,7 @@ $products=searchGoods($name);
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button"><a class="button" href="cart.php">add to cart</a></button>
+<button class="button"><a class="button" href="index.php?page=cart">add to cart</a></button>
 	</div>
 	
 	   </div>

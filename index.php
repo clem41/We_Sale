@@ -2,16 +2,9 @@
 //TODO start session
 session_start()
 
-//TODO include database.php file
-//mysql_select_db($bd_projet) or DIE('Error: database name is not available');
-
 ?>
+<?php include_once 'database.php';
 
-<?php
-//TODO assign database connexion into $database variable
-
-
-//TODO include checkUser.php file
 ?>
 
 <?php
@@ -21,6 +14,15 @@ session_start()
 ?>
 <!DOCTYPE html>
 <html>
+<head>    
+    <link rel="stylesheet" href="productCSS.css" />
+	<link rel="stylesheet" href="display.css" />
+</head>
+<body>
+<div class="category">
+<?php include 'header.php'?>
+</div>
+
 <?php 
 if (!empty($_GET['page'])) {
   if($_GET['page'] === 'products') {
@@ -32,11 +34,17 @@ if (!empty($_GET['page'])) {
   elseif ($_GET['page'] === 'cart') {
     include('cart.php');
   }
-  else {
-    include('main.php');
-
+   elseif ($_GET['page'] === 'check') {
+    include('checkUser.php');
   }
-} else {
+   elseif ($_GET['page'] === 'main') {
+    include('main.php');
+  }
+  elseif ($_GET['page'] === 'resultdisplay') {
+    include('resultdisplay.php');
+  }
+   }
+ else {
   include(main.php);
 }
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
