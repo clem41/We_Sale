@@ -11,10 +11,6 @@
 </head>
 <body>
 		<link rel="stylesheet" href="cart.css" />
-<div class="category">
-		<?php include'header.php';
-	?>
-	</div>
 	<?php $listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";

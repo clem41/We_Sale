@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="createAccountPage.css" />
 </head>
 <body>
-	<?php include("header.php") ?>
  	<form action = "insert_update_into_db.php" method = "post">
  		<p class="inscritpion">
 			 

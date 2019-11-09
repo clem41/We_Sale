@@ -6,13 +6,9 @@
 </head>
 <body>
 <div class="category">
-<?php include 'header.php'?>
-<?php $name=$_GET['name'];?>
-</div>
-<div class="category">
 <ul class="display">
-  <li class="display"><a class="active" href="main.php">Start to shopping</a></li>
-  <li class="display"><a class="active" href="createAccountPage.php">creat a new account</a></li>
+  <li class="display"><a class="active" href="index.php?page=main">Start to shopping</a></li>
+  <li class="display"><a class="active" href="index.php?page=account">creat a new account</a></li>
 </ul>
 </div>
 <?php
@@ -21,7 +17,7 @@
   if($name!=''){
   	$userfound=selectUserByUsername($name);
 	if($userfound==NULL){
-		echo 'this user dosent exist';
+		echo 'this user dose not exist';
 		
 	}
 	else{
@@ -30,7 +26,7 @@
   	 echo 'sucsses';
   	}
   	else{
-  	echo 'fail';	
+  	echo 'the password is wrong please try again';	
   		}}}
   else{
   	echo 'please input the both name and password';
