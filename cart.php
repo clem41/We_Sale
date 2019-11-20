@@ -10,11 +10,13 @@
 
 </head>
 <body>
-	<?php if(!empty($_POST)){
-		addToCart($_POST["idProduct"]);
-	}?>
 		<link rel="stylesheet" href="cart.css" />
+			<?php if(isset($_POST['submit'])){
+		addToCart($_POST["idProduct"]);
+		echo "Your product was well added to the cart";
+	}?>
 	<?php $listOfOrdersInCart = getOrderInCart();
+
 	if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";
 	}

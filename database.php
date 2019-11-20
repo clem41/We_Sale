@@ -122,14 +122,16 @@ function addToCart($articleId){
 		//we add the product on the database
 		$product=getProductById($articleId);
 		$listOfOrdersInCart = getOrderInCart();
-		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].", ".$article1['id'].", '1', ".$article1['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].", ".$product['id'].", '1', ".$product['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
 	else{
-		$product=getProductById($articleId);
 
-				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].",'".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		$product=getProductById($articleId);
+	
+
+				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].",'".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 		writeOnDatabase($request);
-				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
 }
