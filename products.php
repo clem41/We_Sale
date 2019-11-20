@@ -10,7 +10,9 @@
 	<div class="category">
 <?php if(isset($_GET['name'])){
 	     $name=$_GET['name'];
-	};?>
+	}
+	else{$name="";}
+	?>
 </div>
 <div class="category">
 <ul class="display">
@@ -25,6 +27,7 @@
 if(isset($_GET['name'])){
 	     $name=$_GET['name'];
 }
+else{$name="";}
 $flag=0;
 if($name!=""){
 	$flag=1;
