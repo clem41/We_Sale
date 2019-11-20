@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<?php if(isset($_POST)){
+	<?php if(!empty($_POST)){
 		addToCart($_POST["idProduct"]);
 	}?>
 		<link rel="stylesheet" href="cart.css" />
