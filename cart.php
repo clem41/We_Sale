@@ -15,6 +15,10 @@
 		addToCart($_POST["idProduct"]);
 		echo "Your product was well added to the cart";
 	}?>
+				<?php if(isset($_POST['submitDelete'])){
+		deleteProductFromCart($_POST["idProduct"],$_POST["idOrderProduct"]);
+		echo "A product was deleted";
+	}?>
 	<?php $listOfOrdersInCart = getOrderInCart();
 
 	if ($listOfOrdersInCart==NULL){
@@ -46,7 +50,11 @@
     		<p>Quantity :<?php echo($Product['quantity']);?>
     	
     			</div></li>
-    			<li><button class="buttonCartCheck" href="cart.php">Delete</button></li>
+    			<li><form method="post" action="index.php?page=cart">
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['id']?>"> 
+<input id="idOrderProduct" name="idOrderProduct" type="hidden" value="<?php echo $Product['order_id']?>">      
+<input type="submit" name='submitDelete' value='Delete' class="button">
+</form></li>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
