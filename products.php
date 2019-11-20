@@ -8,11 +8,15 @@
 </head>
 <body>
 	<div class="category">
-<?php $name=isset($_GET['name']);?>
+<?php if(isset($_GET['name'])){
+	     $name=$_GET['name'];
+	}
+	else{$name="";}
+	?>
 </div>
 <div class="category">
 <ul class="display">
-  <li class="display"><a class="active" href="main.php">Back to main</a></li>
+  <li class="display"><a class="active" href="index.php?page=main">Back to main</a></li>
   <li class="display"><a href="resultdisplay.php?name=<?php echo $name?>&sort=low">Price:low to high</a></li>
   <li class="display"><a href="resultdisplay.php?name=<?php echo $name?>&sort=hight">Price:high to low</a></li>
   <li class="display"><a href="Newest">Newest Arrival</a></li>
@@ -20,7 +24,10 @@
 </div>
 <div>
 <?php
-$name=isset($_GET['name']);
+if(isset($_GET['name'])){
+	     $name=$_GET['name'];
+}
+else{$name="";}
 $flag=0;
 if($name!=""){
 	$flag=1;
