@@ -1,6 +1,6 @@
 <?php
 	include_once 'database.php';
-	$bdd = new PDO('mysql:host=localhost;dbname=bd_project', 'root');
+	$bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
 	//$con = mysql_connect("localhost","root","");
 	//if (!$con)
 	if(!$bdd)
@@ -8,13 +8,14 @@
 		die('Could not connect: ' . mysql_error());
 	}
 
-	//mysql_select_db("bd_project", $con);
+	//mysql_select_db("bd_projet", $con);
 
 	$sql="INSERT INTO `users` (`id`, `username`, `email`, `password`, 
 	`billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) 
 	VALUES
 	('$_POST[name]','$_POST[email]','$_POST[password]')";
 	
+	//for testing if the data has been transfered to this file.
 	/*
 	echo $_POST["name"];
 	echo $_POST["email"];
