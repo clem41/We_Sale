@@ -23,7 +23,7 @@
 		 	<br>
 		 	<label> confirm your password </label>
 		 	<br>
-		 	<input type="text" name="confirm password"><br><br>
+		 	<input type="text" name="confpassword"><br><br>
 		    <input type="submit">
  		
 			<p>

@@ -17,13 +17,13 @@
   if($name!=''){
   	$userfound=selectUserByUsername($name);
 	if($userfound==NULL){
-		echo 'this user dose not exist';
+		echo 'this user does not exist';
 		
 	}
 	else{
 			$password=logIn($name);
   if($psw==$password[0]['password']){
-  	 echo 'sucsses';
+  	 echo 'success';
   	}
   	else{
   	echo 'the password is wrong please try again';	
