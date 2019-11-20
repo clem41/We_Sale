@@ -10,6 +10,9 @@
 
 </head>
 <body>
+	<?php if(isset($_POST)){
+		addToCart($_POST["idProduct"]);
+	}?>
 		<link rel="stylesheet" href="cart.css" />
 	<?php $listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
