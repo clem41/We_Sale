@@ -9,7 +9,7 @@
 $name=$_POST['name'];?>
 <div class="category">
 <ul class="display">
-  <li class="display"><a class="active" href="main.php">Back to main</a></li>
+   <li class="display"><a class="active" href="index.php?page=main">Back to main</a></li>
   <li class="display"><a href="resultdisplay.php?name=<?php echo $name?>&sort=low">Price:low to high</a></li>
   <li class="display"><a href="resultdisplay.php?name=<?php echo $name?>&sort=hight">Price:high to low</a></li>
   <li class="display"><a href="Newest">Newest Arrival</a></li>
