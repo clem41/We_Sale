@@ -110,7 +110,7 @@ function searchGoods($name)
 		return $res;
 }
 
-/*
+
 function addToCart($articleId){
 	$listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
@@ -126,14 +126,13 @@ function addToCart($articleId){
 	}
 	else{
 		$product=getProductById($articleId);
-<<<<<<< HEAD
+
 				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].",'".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 		writeOnDatabase($request);
-=======
 				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
-*/
+}
 	
 function logIn($name){
 	$params = array('name'=> $name);
