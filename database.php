@@ -1,9 +1,9 @@
 <?php
 try
 {    //FIXME: change dbname by your own dbname
-	//uncomment for mac emvironmemt
+	//uncomment the following line for mac environmemt
 	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
-	//uncomment for windows environnment
+	//uncomment the following line for windows environnment
     $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
 }
 catch(Exception $e)
@@ -115,7 +115,7 @@ function searchGoods($name)
 		//var_dump($res);
 	  	$numberOfProductsFound=count($res);
 	    if($numberOfProductsFound==0){
-			echo "Sorry,didn't find what you are looking for";
+			echo "Sorry, we have not found what you are looking for";
 			}?>
 		<?php
 		return $res;
