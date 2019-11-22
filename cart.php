@@ -57,6 +57,7 @@
     				<?php  
     				echo ($nameProduct[0]['name']);?>
     			</div>
+				 <div class=display>
     		<p>Quantity :<?php echo($Product['quantity']);?></p>
 
 <form method="post" action="index.php?page=cart">
@@ -103,5 +104,6 @@
 	<br><button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
 	<br><br></p>
 </li>
+</div>
 </div>
 </body>
