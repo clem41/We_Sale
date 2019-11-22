@@ -11,11 +11,16 @@
 </head>
 <body>
 		<link rel="stylesheet" href="cart.css" />
-			<?php if(isset($_POST['submit'])){
+
+			<?php 
+//Add a product in the cart if there is a redirection from a add to cart button
+			if(isset($_POST['submit'])){
 		addToCart($_POST["idProduct"]);
 		echo "Your product was well added to the cart";
 	}?>
-				<?php if(isset($_POST['submitDelete'])){
+				<?php 
+//Delete a product in the cart if there is a redirection from a delete button of the cart
+				if(isset($_POST['submitDelete'])){
 		deleteProductFromCart($_POST["idProduct"],$_POST["idOrderProduct"]);
 		echo "A product was deleted";
 	}?>
@@ -32,8 +37,6 @@
 		<br>
 		<?php
 		foreach($listOfOrdersInCart as $OrderInCart){
-			//echo $OrderInCart['id'];
-		//var_dump($OrderInCart);
 		$listOfProductsInCart = getAllOrderProductsByOrderId($OrderInCart['id']);
 	
 		foreach($listOfProductsInCart as $Product){

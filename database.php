@@ -58,6 +58,17 @@ function getAllOrderProductsByOrderId($orderId)
     ';
     return executeQuery($query, $params);
 }
+function getOrderProductsByOrderIdAndProductId($orderId,$productId)
+{
+    $params = array('orderId' => $orderId,'productId' =>$productId);
+    $query = '
+        select *
+          from order_products
+          where order_products.order_id = :orderId
+          and order_products.product_id = :productId
+    ';
+    return executeQuery($query, $params);
+}
 
 function getPictureName($productId)
 //get the picture name (name.jpg) from a product ID
@@ -110,6 +121,11 @@ function searchGoods($name)
 		return $res;
 }
 
+function updateProductQuantityInCart($articleId,$orderId,$quantity){
+    $request= "UPDATE `order_products` SET `quantity`=".$quantity." WHERE `order_products`.`product_id`=".$articleId." AND `order_products`.`order_id`=".$orderId."";
+    writeOnDatabase($request);
+}
+
 
 function addToCart($articleId){
 	$listOfOrdersInCart = getOrderInCart();
@@ -125,15 +141,22 @@ function addToCart($articleId){
 		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].", ".$product[0]['id'].", '1', ".$product[0]['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
 	else{
+			//check if the product is already in the cart or not
+		$productCurrentlyInTheCart = getOrderProductsByOrderIdAndProductId($listOfOrdersInCart[0]['id'],$articleId);
+		//var_dump($productCurrentlyInTheCart);
+		if ($productCurrentlyInTheCart!=NULL){
+			$newQuantity = (int)$productCurrentlyInTheCart[0]['quantity']+1;
+			echo($newQuantity);
+			updateProductQuantityInCart($productCurrentlyInTheCart[0]['product_id'],$productCurrentlyInTheCart[0]['order_id'],$newQuantity);}
+			else{
 
 		$product=getProductById($articleId);
-	
-
 				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].",'".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 		writeOnDatabase($request);
 				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
+}
 }
 
 function deleteProductFromCart($articleId,$orderId){
