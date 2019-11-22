@@ -30,11 +30,11 @@ switch($flag){
 		 	<br>
 		 	<label> password </label>
 		 	<br>
-		 	<input type="text" name="password">
+		 	<input type="password" name="password">
 		 	<br>
 		 	<label> confirm your password </label>
 		 	<br>
-		 	<input type="text" name="confirmpassword"><br><br>
+		 	<input type="password" name="confirmpassword"><br><br>
 		    <input type="submit">
  		
 			</p>
