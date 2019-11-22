@@ -42,10 +42,11 @@
 			<div class="boxProduct">
 				        <?php $imageProduct = getPictureName($Product['product_id']);?> 
     		<li><img id="recipeImage" src="<?php echo $imageProduct[0]['image']?>"/></li>
-    			<?php $nameProduct = getProductNamebyId($Product['id']) ;
+    			<?php $nameProduct = getProductNamebyId($Product['product_id']) ;
     			?>
     		<li><div class="productTitle">
-    				<?php  echo ($nameProduct[0]['name']);?>
+    				<?php  
+    				echo ($nameProduct[0]['name']);?>
     			</div>
     		<p>Quantity :<?php echo($Product['quantity']);?>
     	
