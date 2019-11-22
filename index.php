@@ -45,7 +45,7 @@ if (!empty($_GET['page'])) {
   }
    }
  else {
-  include(main.php);
+  include('main.php');
 }
 //if 'action/'.$page'.php' exists then include it (use file_exists($filename) function)
 ?>
