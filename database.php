@@ -175,6 +175,11 @@ function selectUserByUsername($name){
 	$query="select * from users where username='$name'";
 	return executeQuery($query,$params);
 }
+function addUserToDatabase($name,$email,$psw){
+
+	    $request="INSERT INTO `users` (`username`,`email`,`password`) VALUES('".$name."','".$email."','".$psw."')";
+		writeOnDatabase($request);
+	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database
