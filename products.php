@@ -13,7 +13,6 @@
 	}
 	else{$name="";}
 	?>
-</div>
 <div class="category">
 <ul class="display">
   <li class="display"><a class="active" href="index.php?page=main">Back to main</a></li>
@@ -35,6 +34,8 @@ if($name!=""){
 $products=searchGoods($name);
 ?>
 </div>
+<div>
+  </div class="non">
 <?php 
 switch($flag){
 	case 0:
@@ -70,26 +71,27 @@ foreach ($products as $product)
 </div>
 <?php }break;
   case 1:
-  foreach ($products as $product)
-{?>
-<div class="image">
-<a target="_blank" href="products.php?name=<?php echo $product['name']?>">
-	  <?php $imageProduct = getPictureName($product['id']);?> 
-      <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
-</a> 
-</div>
- <div class="description">
-	<?php		
-		echo $product['name'];
-		echo "<br>";
-		echo $product['description'];
-		echo "<br>";
-		echo $product['unit_price'];
-      ?>
-	</div>
-<?php }break;?>
-<?php }?>
+    foreach ($products as $product)
+    {?>
+      <div class="image">
+        <a target="_blank" href="products.php?name=<?php echo $product['name']?>">
+        	  <?php $imageProduct = getPictureName($product['id']);?> 
+              <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
+        </a> 
+      </div>
+      <div class="description">
+      	<?php		
+      		echo $product['name'];
+      		echo "<br>";
+      		echo $product['description'];
+      		echo "<br>";
+      		echo $product['unit_price'];
+            ?>
+      	</div>
+      <?php }
+    break;?>
 
-<?php include 'footer.php'?>
+<?php }?>
+</div>
 </body>
 </html>

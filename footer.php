@@ -23,7 +23,7 @@ white-space: nowrap;
 </head> 
 <footer>
 <div class="bottom"> 
-<p><center>Welcome to My Sale!</center></p> 
+<p></br><center>Welcome to My Sale!</center></p> 
 <p><center>Copyright © 2019</center></p> 
 </div> 
 </footer>

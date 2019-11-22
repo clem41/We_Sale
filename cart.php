@@ -57,7 +57,7 @@
     				<?php  
     				echo ($nameProduct[0]['name']);?>
     			</div>
-    		<p>Quantity :<?php echo($Product['quantity']);?>
+    		<p>Quantity :<?php echo($Product['quantity']);?></p>
 
 <form method="post" action="index.php?page=cart">
 <input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
@@ -82,7 +82,7 @@
 <input type="submit" name='submitDelete' value='Delete' class="button">
 </form></li>
 
-</form></li>
+</form>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
@@ -101,3 +101,7 @@
 	<br>
 	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
 	<br><button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
+	<br><br></p>
+</li>
+</div>
+</body>
