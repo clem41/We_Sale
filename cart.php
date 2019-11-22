@@ -15,7 +15,7 @@
 			<?php 
 //Add a product in the cart if there is a redirection from a add to cart button
 			if(isset($_POST['submit'])){
-		addToCart($_POST["idProduct"]);
+		addToCart($_POST["idProduct"],$_POST['quantity']);
 		echo "Your product was well added to the cart";
 	}?>
 				<?php 
@@ -23,7 +23,13 @@
 				if(isset($_POST['submitDelete'])){
 		deleteProductFromCart($_POST["idProduct"],$_POST["idOrderProduct"]);
 		echo "A product was deleted";
-	}?>
+	}
+//if a quantity was updated
+					if(isset($_POST['newQuantity'])){
+	updateProductQuantityInCart($_POST['idProduct'],$_POST["idOrderProduct"],$_POST['quantity']);
+	echo" update of quantity done";
+}
+	?>
 	<?php $listOfOrdersInCart = getOrderInCart();
 
 	if ($listOfOrdersInCart==NULL){
@@ -52,12 +58,30 @@
     				echo ($nameProduct[0]['name']);?>
     			</div>
     		<p>Quantity :<?php echo($Product['quantity']);?>
+
+<form method="post" action="index.php?page=cart">
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
+<input id="idOrderProduct" name="idOrderProduct" type="hidden" value="<?php echo $Product['order_id']?>">
+       <select name="quantity" id="quantity">
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+           <option value="9">9</option>
+       </select>       
+<input type="submit" name='newQuantity' value='newQuantity' class="button">
     	
     			</div></li>
     			<li><form method="post" action="index.php?page=cart">
 <input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
 <input id="idOrderProduct" name="idOrderProduct" type="hidden" value="<?php echo $Product['order_id']?>">      
 <input type="submit" name='submitDelete' value='Delete' class="button">
+</form></li>
+
 </form></li>
     		<div class="productPrice">
     			<?php 
