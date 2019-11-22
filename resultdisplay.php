@@ -7,6 +7,7 @@
   <body>
     <?php
     $name=$_POST['name'];?>
+    <div class=display>
     <div class="category">
       <ul class="display">
         <li class="display"><a class="active" href="index.php?page=main">Back to main</a></li>
@@ -26,11 +27,13 @@
     <div class=display>
       <?php foreach ($products as $product)
       {?>
+
         <div class="img">
           <a target="_blank" href="index.php?page=products&name=<?php echo $product['name']?>">
       	  <?php $imageProduct = getPictureName($product['id']);?> 
             <img src="<?php echo $imageProduct[0]['image']?>" alt="图片文本描述" width="300px" height="400px">
           </a>
+
           <div class="desc">
           	<?php		
           		echo $product['name'];
@@ -58,6 +61,7 @@
       	</div>
       <?php }?>
     </div>
+</div>
 
   </body>
 </html>
