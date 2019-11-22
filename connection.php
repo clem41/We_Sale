@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>displayForm</title>
+
 <link rel="stylesheet" href="display.css" />
 </head>
 <body>
-
+<?php include("header.php");?>
 <div class="category">
   <ul class="display">
       <li class="display"><a class="active" href="index.php?page=main">Start to shopping</a></li>
-      <li class="display"><a class="active" href="index.php?page=account">create a new account</a></li>
+      <li class="display"><a class="active" href="index.php?page=createAccount">create a new account</a></li>
   </ul>
 </div>
 <?php
@@ -41,13 +38,14 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
 <?php
 if (empty($_POST["deconnection"])) {
   session_destroy();
-  
 }
-if(empty($_SESSION["login"]))
+var_dump($_SESSION);
+if(!empty($_SESSION["login"]))
 {
   ?>
   <form action ="index.php?page=connection" method = "post">
-    <input type="submit" value="deconnection">
+    <input type="submit" name="deconnection" value ="deconnection">
+  </form>
 <?php
 }
 else{
