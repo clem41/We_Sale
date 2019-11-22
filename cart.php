@@ -15,7 +15,12 @@
 			<?php 
 //Add a product in the cart if there is a redirection from a add to cart button
 			if(isset($_POST['submit'])){
-		addToCart($_POST["idProduct"],$_POST['quantity']);
+ 			if (session_status() == PHP_SESSION_NONE) {
+ 				  header('http://localhost/We_Sale/index.php?page=connection');
+ 			 exit();
+ 			}
+    
+		addToCart($_POST["idProduct"],$_POST['quantity'],$_SESSION['login']);
 		echo "Your product was well added to the cart";
 	}?>
 				<?php 
@@ -29,8 +34,12 @@
 	updateProductQuantityInCart($_POST['idProduct'],$_POST["idOrderProduct"],$_POST['quantity']);
 	echo" update of quantity done";
 }
-	?>
-	<?php $listOfOrdersInCart = getOrderInCart();
+	?><?php
+	if(!isset($_SESSION)) {
+		echo"You must log in to see your cart";
+	}
+	else{
+	$listOfOrdersInCart = getOrderInCart($_SESSION['login']);
 
 	if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";
@@ -57,8 +66,7 @@
     				<?php  
     				echo ($nameProduct[0]['name']);?>
     			</div>
-				 <div class=display>
-    		<p>Quantity :<?php echo($Product['quantity']);?></p>
+    		<p>Quantity :<?php echo($Product['quantity']);?>
 
 <form method="post" action="index.php?page=cart">
 <input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
@@ -83,7 +91,7 @@
 <input type="submit" name='submitDelete' value='Delete' class="button">
 </form></li>
 
-</form>
+</form></li>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);
@@ -98,12 +106,8 @@
 			</div>
 		<?php }
 		}
-	}?>
+	}
+}?>
 	<br>
 	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
 	<br><button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
-	<br><br></p>
-</li>
-</div>
-</div>
-</body>

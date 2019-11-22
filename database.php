@@ -38,15 +38,17 @@ function getProductById($id){
 	$query = 'SELECT * FROM products where id= :id';
     return executeQuery($query, $params);
 }
-function getOrderInCart()
+function getOrderInCart($userId)
 //detection of orders which are still in the cart
 {
+	$params = array('userId'=>$userId);
     $query = "
         select *
           from orders 
           where orders.type = 'CART'
+          and orders.user_id=:userId;
     ";
-    return executeQuery($query,NULL);
+    return executeQuery($query,$params);
 }
 function getAllOrderProductsByOrderId($orderId)
 {
@@ -121,23 +123,30 @@ function searchGoods($name)
 		return $res;
 }
 
+function getUserIdByName($name){
+	$params = array('name'=> $name);
+	$query ="select id from users where users.username=:name";
+	return executeQuery($query,$params);
+}
+
 function updateProductQuantityInCart($articleId,$orderId,$quantity){
     $request= "UPDATE `order_products` SET `quantity`=".$quantity." WHERE `order_products`.`product_id`=".$articleId." AND `order_products`.`order_id`=".$orderId."";
     writeOnDatabase($request);
 }
 
 
-function addToCart($articleId,$quantity){
-	$listOfOrdersInCart = getOrderInCart();
+function addToCart($articleId,$quantity,$login){
+	$userID=getUserIdByName($login);
+	$listOfOrdersInCart = getOrderInCart($userID);
 	if ($listOfOrdersInCart==NULL){
 		//if there isn"t any order in cart, we should create a new order
-		$request = "INSERT INTO `orders` (`type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) VALUES
-		('CART', 'CART', 149.52, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+		$request = "INSERT INTO `orders` (`user_id`,`type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) VALUES
+		(".$userID[0]."'CART', 'CART', 149.52, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
 		writeOnDatabase($request);
 
 		//we add the product on the database
 		$product=getProductById($articleId);
-		$listOfOrdersInCart = getOrderInCart();
+		$listOfOrdersInCart = getOrderInCart($userID);
 		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].", ".$product[0]['id'].", ".$quantity.", ".$product[0]['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
 	else{
