@@ -11,7 +11,21 @@
 </head>
 <body>
 		<link rel="stylesheet" href="cart.css" />
+
+			<?php 
+//Add a product in the cart if there is a redirection from a add to cart button
+			if(isset($_POST['submit'])){
+		addToCart($_POST["idProduct"]);
+		echo "Your product was well added to the cart";
+	}?>
+				<?php 
+//Delete a product in the cart if there is a redirection from a delete button of the cart
+				if(isset($_POST['submitDelete'])){
+		deleteProductFromCart($_POST["idProduct"],$_POST["idOrderProduct"]);
+		echo "A product was deleted";
+	}?>
 	<?php $listOfOrdersInCart = getOrderInCart();
+
 	if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";
 	}
@@ -23,8 +37,6 @@
 		<br>
 		<?php
 		foreach($listOfOrdersInCart as $OrderInCart){
-			//echo $OrderInCart['id'];
-		//var_dump($OrderInCart);
 		$listOfProductsInCart = getAllOrderProductsByOrderId($OrderInCart['id']);
 	
 		foreach($listOfProductsInCart as $Product){
@@ -33,15 +45,20 @@
 			<div class="boxProduct">
 				        <?php $imageProduct = getPictureName($Product['product_id']);?> 
     		<li><img id="recipeImage" src="<?php echo $imageProduct[0]['image']?>"/></li>
-    			<?php $nameProduct = getProductNamebyId($Product['id']) ;
+    			<?php $nameProduct = getProductNamebyId($Product['product_id']) ;
     			?>
     		<li><div class="productTitle">
-    				<?php  echo ($nameProduct[0]['name']);?>
+    				<?php  
+    				echo ($nameProduct[0]['name']);?>
     			</div>
     		<p>Quantity :<?php echo($Product['quantity']);?>
     	
     			</div></li>
-    			<li><button class="buttonCartCheck" href="cart.php">Delete</button></li>
+    			<li><form method="post" action="index.php?page=cart">
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
+<input id="idOrderProduct" name="idOrderProduct" type="hidden" value="<?php echo $Product['order_id']?>">      
+<input type="submit" name='submitDelete' value='Delete' class="button">
+</form></li>
     		<div class="productPrice">
     			<?php 
     			$unitPriceProduct = getProductPrice($Product['product_id']);

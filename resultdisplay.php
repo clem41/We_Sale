@@ -35,7 +35,10 @@ $products=searchGoods($name);
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button"><a class="button" href="index.php?page=cart">add to cart</a></button>
+<form method="post" action="index.php?page=cart">
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $product['id']?>">      
+<input type="submit" name='submit' value='Add to Cart' class="button">
+</form></b>
 	</div>
 	
 	   </div>

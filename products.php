@@ -51,7 +51,10 @@ foreach ($products as $product)
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button"><a class="button" href="cart.php">add to cart</a></button>
+<form method="post" action="index.php?page=cart">
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $product['id']?>">      
+<input type="submit" name='submit' value='Add to Cart' class="button">
+</form>
 </div>
 </div>
 <?php }break;
@@ -72,7 +75,6 @@ foreach ($products as $product)
 		echo "<br>";
 		echo $product['unit_price'];
       ?>
-<button class="button2"><a class="button" href="index.php?page=cart">add to cart</a></button>
 	</div>
 <?php }break;?>
 <?php }?>

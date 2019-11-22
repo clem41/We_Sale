@@ -1,9 +1,9 @@
 <?php
 try
 {    //FIXME: change dbname by your own dbname
-	//uncomment for mac emvironmemt
+	//uncomment the following line for mac environmemt
 	//$bdd = new PDO('mysql:host=localhost;dbname=bd_project','root','root');
-	//uncomment for windows environnment
+	//uncomment the following line for windows environnment
     $bdd = new PDO('mysql:host=localhost;dbname=bd_projet', 'root');
 }
 catch(Exception $e)
@@ -58,6 +58,17 @@ function getAllOrderProductsByOrderId($orderId)
     ';
     return executeQuery($query, $params);
 }
+function getOrderProductsByOrderIdAndProductId($orderId,$productId)
+{
+    $params = array('orderId' => $orderId,'productId' =>$productId);
+    $query = '
+        select *
+          from order_products
+          where order_products.order_id = :orderId
+          and order_products.product_id = :productId
+    ';
+    return executeQuery($query, $params);
+}
 
 function getPictureName($productId)
 //get the picture name (name.jpg) from a product ID
@@ -104,10 +115,15 @@ function searchGoods($name)
 		//var_dump($res);
 	  	$numberOfProductsFound=count($res);
 	    if($numberOfProductsFound==0){
-			echo "Sorry,didn't find what you are looking for";
+			echo "Sorry, we have not found what you are looking for";
 			}?>
 		<?php
 		return $res;
+}
+
+function updateProductQuantityInCart($articleId,$orderId,$quantity){
+    $request= "UPDATE `order_products` SET `quantity`=".$quantity." WHERE `order_products`.`product_id`=".$articleId." AND `order_products`.`order_id`=".$orderId."";
+    writeOnDatabase($request);
 }
 
 
@@ -122,16 +138,30 @@ function addToCart($articleId){
 		//we add the product on the database
 		$product=getProductById($articleId);
 		$listOfOrdersInCart = getOrderInCart();
-		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].", ".$article1['id'].", '1', ".$article1['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].", ".$product[0]['id'].", '1', ".$product[0]['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
 	else{
-		$product=getProductById($articleId);
+			//check if the product is already in the cart or not
+		$productCurrentlyInTheCart = getOrderProductsByOrderIdAndProductId($listOfOrdersInCart[0]['id'],$articleId);
+		//var_dump($productCurrentlyInTheCart);
+		if ($productCurrentlyInTheCart!=NULL){
+			$newQuantity = (int)$productCurrentlyInTheCart[0]['quantity']+1;
+			echo($newQuantity);
+			updateProductQuantityInCart($productCurrentlyInTheCart[0]['product_id'],$productCurrentlyInTheCart[0]['order_id'],$newQuantity);}
+			else{
 
-				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart['id'].",'".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		$product=getProductById($articleId);
+				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].",'".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 		writeOnDatabase($request);
-				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$article1['id']."', '1', '".$article1['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	
 	}
+}
+}
+
+function deleteProductFromCart($articleId,$orderId){
+	$request = "DELETE FROM `order_products` WHERE `order_products`.`product_id` = ".$articleId." and `order_products`.`order_id` = ".$orderId."";
+	writeOnDatabase($request);
 }
 	
 function logIn($name){
@@ -145,6 +175,11 @@ function selectUserByUsername($name){
 	$query="select * from users where username='$name'";
 	return executeQuery($query,$params);
 }
+function addUserToDatabase($name,$email,$psw){
+
+	    $request="INSERT INTO `users` (`username`,`email`,`password`) VALUES('".$name."','".$email."','".$psw."')";
+		writeOnDatabase($request);
+	}
 //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 //***************************************************
 //Add your function here to interact with the database

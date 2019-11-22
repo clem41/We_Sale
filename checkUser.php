@@ -18,20 +18,13 @@
   if($name!=''){
   	$userfound=selectUserByUsername($name);
 	if($userfound==NULL){
-		echo 'this user dose not exist';
+		echo 'this user does not exist';
 		
 	}
 	else{
 			$password=logIn($name);
   if($psw==$password[0]['password']){
-    
-  	 echo 'successful connection, do you want to return to the main';
-     ?>
-    <form action="header.php" method="post">
-      <input type="hidden" name="success">
-      <button type="submit" name="success" value=1>ok</button>
-    </form>
-    <?php
+  	 echo 'sucsses';
   	}
   	else{
   	echo 'the password is wrong please try again';	
