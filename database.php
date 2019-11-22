@@ -127,7 +127,7 @@ function updateProductQuantityInCart($articleId,$orderId,$quantity){
 }
 
 
-function addToCart($articleId){
+function addToCart($articleId,$quantity){
 	$listOfOrdersInCart = getOrderInCart();
 	if ($listOfOrdersInCart==NULL){
 		//if there isn"t any order in cart, we should create a new order
@@ -138,22 +138,20 @@ function addToCart($articleId){
 		//we add the product on the database
 		$product=getProductById($articleId);
 		$listOfOrdersInCart = getOrderInCart();
-		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].", ".$product[0]['id'].", '1', ".$product[0]['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+		$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].", ".$product[0]['id'].", ".$quantity.", ".$product[0]['unit_price'].", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
 	}
 	else{
 			//check if the product is already in the cart or not
 		$productCurrentlyInTheCart = getOrderProductsByOrderIdAndProductId($listOfOrdersInCart[0]['id'],$articleId);
 		//var_dump($productCurrentlyInTheCart);
 		if ($productCurrentlyInTheCart!=NULL){
-			$newQuantity = (int)$productCurrentlyInTheCart[0]['quantity']+1;
+			$newQuantity = (int)$productCurrentlyInTheCart[0]['quantity']+$quantity;
 			echo($newQuantity);
 			updateProductQuantityInCart($productCurrentlyInTheCart[0]['product_id'],$productCurrentlyInTheCart[0]['order_id'],$newQuantity);}
 			else{
 
 		$product=getProductById($articleId);
-				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].",'".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
-		writeOnDatabase($request);
-				$request = "INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES ('', '', '".$product[0]['id']."', '1', '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; 
+				$request = "INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES (".$listOfOrdersInCart[0]['id'].",'".$product[0]['id']."', ".$quantity.", '".$product[0]['unit_price']."', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; writeOnDatabase($request);
 	
 	}
 }
