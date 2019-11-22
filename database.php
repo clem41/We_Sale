@@ -137,7 +137,7 @@ function addToCart($articleId){
 }
 
 function deleteProductFromCart($articleId,$orderId){
-	$request = "DELETE FROM order_products WHERE id=.$articleId and order_id=.$orderId";
+	$request = "DELETE FROM `order_products` WHERE `order_products`.`product_id` = ".$articleId." and `order_products`.`order_id` = ".$orderId."";
 	writeOnDatabase($request);
 }
 	

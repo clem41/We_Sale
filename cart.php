@@ -51,7 +51,7 @@
     	
     			</div></li>
     			<li><form method="post" action="index.php?page=cart">
-<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['id']?>"> 
+<input id="idProduct" name="idProduct" type="hidden" value="<?php echo $Product['product_id']?>"> 
 <input id="idOrderProduct" name="idOrderProduct" type="hidden" value="<?php echo $Product['order_id']?>">      
 <input type="submit" name='submitDelete' value='Delete' class="button">
 </form></li>
