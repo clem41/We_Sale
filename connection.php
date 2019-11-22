@@ -14,17 +14,17 @@
 </div>
 <?php
 if (isset($_POST['username']) and isset($_POST['psw'])){
-  $name=$_POST['username'];
-  $psw=$_POST['psw'];
+  $_SESSION["login"]=$_POST['username'];
+  $_SESSION["password"]=$_POST['psw'];
   
-  if($name!=''){
-    $userfound=selectUserByUsername($name);
+  if($_SESSION["login"]!=''){
+    $userfound=selectUserByUsername($_SESSION["login"]);
     if($userfound==NULL){
       echo 'this user dose not exist';
     }
     else{
-      $password=logIn($name);
-      if($psw==$password[0]['password']){
+      $password=logIn($_SESSION["login"]);
+      if($_SESSION["password"]==$password[0]['password']){
         echo 'successful connection';
                 
       }
@@ -39,8 +39,11 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
 }
 ?>
 <?php
-
-if(isset($_POST["connection"]))
+if (empty($_POST["deconnection"])) {
+  session_destroy();
+  
+}
+if(empty($_SESSION["login"]))
 {
   ?>
   <form action ="index.php?page=connection" method = "post">

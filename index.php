@@ -2,7 +2,7 @@
 //TODO start session
 
 session_start();
-if (empty($_SESSION["username"])&& empty($_SESSION["psw"]))
+if (empty($_SESSION["login"])&& empty($_SESSION["psw"]))
 
 
 ?>
