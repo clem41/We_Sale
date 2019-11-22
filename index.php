@@ -1,6 +1,9 @@
 <?php
 //TODO start session
-session_start()
+
+session_start();
+if (empty($_SESSION["username"])&& empty($_SESSION["psw"]))
+
 
 ?>
 <?php include_once 'database.php';
@@ -14,7 +17,7 @@ session_start()
 ?>
 <!DOCTYPE html>
 <html>
-<head>    
+<head>      
     <link rel="stylesheet" href="productCSS.css" />
 	<link rel="stylesheet" href="display.css" />
 </head>
@@ -28,14 +31,11 @@ if (!empty($_GET['page'])) {
   if($_GET['page'] === 'products') {
     include('products.php');
   } 
-  elseif($_GET['page'] === 'account') {
-    include('createAccountPage.php');
-  } 
   elseif ($_GET['page'] === 'cart') {
     include('cart.php');
   }
-   elseif ($_GET['page'] === 'check') {
-    include('checkUser.php');
+   elseif ($_GET['page'] === 'connection') {
+    include('connection.php');
   }
    elseif ($_GET['page'] === 'main') {
     include('main.php');
@@ -43,6 +43,8 @@ if (!empty($_GET['page'])) {
   elseif ($_GET['page'] === 'resultdisplay') {
     include('resultdisplay.php');
   }
+  elseif ($_GET['page'] === 'deconnection')
+    include('deconnection.php');
    }
  else {
   include('main.php');
@@ -82,7 +84,7 @@ if (!empty($_GET['page'])) {
 // to get data from database (if needed)
 
 // add view display possibly using data from database
-  
+
 ?>
 
 <?php include 'footer.php'?>
