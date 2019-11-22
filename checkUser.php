@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>displayForm</title>
+
 <link rel="stylesheet" href="display.css" />
 </head>
 <body>

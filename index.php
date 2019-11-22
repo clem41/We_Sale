@@ -7,7 +7,7 @@ if (empty($_SESSION["login"])&& empty($_SESSION["psw"]))
 
 ?>
 <?php include_once 'database.php';
-
+var_dump($_SESSION);
 ?>
 
 <?php
@@ -18,14 +18,7 @@ if (empty($_SESSION["login"])&& empty($_SESSION["psw"]))
 <!DOCTYPE html>
 <html>
 <head>      
-    <link rel="stylesheet" href="productCSS.css" />
-	<link rel="stylesheet" href="display.css" />
-</head>
-<body>
-<div class="category">
-<?php include 'header.php'?>
-</div>
-
+<title>We sale</title>  
 <?php 
 if (!empty($_GET['page'])) {
   if($_GET['page'] === 'products') {
@@ -43,8 +36,8 @@ if (!empty($_GET['page'])) {
   elseif ($_GET['page'] === 'resultdisplay') {
     include('resultdisplay.php');
   }
-  elseif ($_GET['page'] === 'deconnection')
-    include('deconnection.php');
+  elseif ($_GET['page'] === 'createAccount')
+    include('createAccountPage.php');
    }
  else {
   include('main.php');
