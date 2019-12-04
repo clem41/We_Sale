@@ -1,7 +1,11 @@
 <?php
 //TODO start session
 
-session_start();
+session_start();// Grégoire : l'idée c'est que la session s'ouvre. Soit c'est un nouvel utilisateur et la on a aucune info
+// soit c'est un utilisateur connu et dans ce cas on a les infos. Mais je ne sais pas comment faire
+$_SESSION['name'] = 
+$_SESSION['email'] = 
+$_SESSION['password'] =
 if (empty($_SESSION["login"])&& empty($_SESSION["psw"]))
 
 
@@ -19,6 +23,7 @@ var_dump($_SESSION);
 <html>
 <head>      
 <title>We sale</title>  
+ <?php include 'header.php'?>
 <?php 
 if (!empty($_GET['page'])) {
   if($_GET['page'] === 'products') {

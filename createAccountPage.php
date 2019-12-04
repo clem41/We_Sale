@@ -1,11 +1,21 @@
+	<?php
+$contenuName = $_POST['name']; 
+setcookie("UserName", $contenu, time()+36000);
+$contenuPassword = $_POST['password']; 
+setcookie("UserPassword", $contenu, time()+36000);
+?>
+	
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>createAccountPage</title>
-	<link rel="stylesheet" href="createAccountPage.css" />
 	<link rel="stylesheet" href="display.css" />
+	 <link rel="stylesheet" href="createAccountPage.css" />
 </head>
 <body>
+
+
 <?php
 
 if (isset($_POST['submit'])){
@@ -43,24 +53,25 @@ else{
  		<p class="inscritpion">
 			 
 	 		
-		 	<label>	your whole name </label>
+		 	<label>	Name. </label>
 		 	<br> 
 		 	<input type="text" name="name">
 		 	<br>
-		 	<label> email </label>
+		 	<label> Email. </label>
 		 	<br> 
 		 	<input type="text" name="email">
 		 	<br>
-		 	<label> password </label>
+		 	<label> Password. </label>
 		 	<br>
 		 	<input type="password" name="password">
 		 	<br>
-		 	<label> confirm your password </label>
+		 	<label> Confirm your password. </label>
 		 	<br>
 		 	<input type="password" name="confirmpassword"><br><br>
 		    <input name = 'submit' type="submit">
  		
 			</p>
  	</form>
+ 	
 </body>
 </html>

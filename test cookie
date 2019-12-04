@@ -1,0 +1,122 @@
+test cookie 
+
+///////////////////////
+USE my_database;
+
+CREATE TABLE `sessions` (
+	`identifiant` VARCHAR( 64 ) NOT NULL ,
+	`nom` VARCHAR( 64 ) NOT NULL ,
+	`dernier_acces` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+	`donnees` TINYTEXT NOT NULL ,
+	PRIMARY KEY ( `identifiant` , `nom` )
+) ENGINE = MYISAM ;
+
+/////////////////////////////////
+
+<?php
+/**
+ * SGBD est une constante contenant l'adresse du serveur MySQL. [typiquement 'localhost']
+ * LOGIN_SGBD est une constante contenant votre login pour la connection au serveur MySQL.
+ * MOT_DE_PASSE_SGBD est une constante contenant votre mot de passe pour la connection au serveur MySQL.
+ * SESSIONS_BDD est une constante contenant le nom de la base de données où sont stockées les données. [ici, 'my_database']
+ * SESSION_TABLE est une constante contenant le nom de la table où sont stockées les données. [ici, 'sessions']
+*/
+
+function ouvrir_session($chemin_de_stockage, $nom_de_session)
+{
+  $_ENV['nom_de_session'] = $nom_de_session;
+  return true;
+}
+
+function fermer_session()
+{
+  return true; // Rien à faire
+}
+
+function lire_session($identifiant_de_session)
+{
+  $mysql = new mysqli(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD, SESSIONS_BDD);
+  //$mysql = mysql_connect(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD); mysql_select_db(SESSIONS_BDD, $mysql);
+  if(!$mysql)
+  {
+    return '';
+  }
+  $resultat =  $mysql->query('SELECT donnees FROM '.SESSIONS_TABLE
+  	.' WHERE identifiant = \''.$identifiant_de_session.'\' AND nom =\''.$_ENV['nom_de_session'].'\'');
+  //$resultat = mysql_query('SELECT donnees FROM '.SESSIONS_TABLE
+  //	.' WHERE identifiant = \''.$identifiant_de_session.'\' AND nom =\''.$_ENV['nom_de_session'].'\'', $mysql);
+  $donnes = '';
+  if($resultat->num_rows == 1) //if(mysql_num_rows($resultat) == 1)
+    $donnees = $result->fetch_array(); //$donnees = mysql_fetch_array($resultat);
+  $resultat->free(); //mysql_free_result($resultat);
+  $mysql->close(); //mysql_close($mysql);
+  return strval($donnes['donnees']);
+}
+
+function ecrire_session($identifiant_de_session, $donnees_de_session)
+{
+  $mysql = new mysqli(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD, SESSIONS_BDD);
+  //$mysql = mysql_connect(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD); mysql_select_db(SESSIONS_BDD, $mysql);
+  if(!$mysql)
+  {
+  	return false;
+  }
+  $result = true;
+  $mysql->query('UPDATE '.SESSIONS_TABLE.' SET donnees = \''.$donnees_de_session.'\''
+  		.' WHERE identifiant = \''.$identifiant_de_session.'\' AND nom =\''.$_ENV['nom_de_session'].'\'') or $result = false;
+  //mysql_query('UPDATE '.SESSIONS_TABLE.' SET donnees = \''.$donnees_de_session.'\''
+  //	.' WHERE identifiant = \''.$identifiant_de_session.'\' AND nom =\''.$_ENV['nom_de_session'].'\'', $mysql) or $result = false;
+  $mysql->close(); //mysql_close($mysql);
+  return $result;
+}
+
+function detruire_session($identifiant_de_session)
+{
+  $mysql = new mysqli(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD, SESSIONS_BDD);
+  //$mysql = mysql_connect(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD); mysql_select_db(SESSIONS_BDD, $mysql);
+  if(!$mysql)
+  {
+  	return false;
+  }
+  $result = true;
+  $mysql->query('DELETE FROM '.SESSIONS_TABLE.' WHERE identifiant = \''.$identifiant_de_session.'\''
+  	.' AND nom =\''.$_ENV['nom_de_session'].'\'') or $result = false;
+  //mysql_query('DELETE FROM '.SESSIONS_TABLE.' WHERE identifiant = \''.$identifiant_de_session.'\''
+  //	.' AND nom =\''.$_ENV['nom_de_session'].'\'', $mysql) or $result = false;
+  $mysql->close(); //mysql_close($mysql);
+  return $result;
+}
+
+function verifier_validite_session($temps_de_validite)
+{
+  $mysql = new mysqli(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD, SESSIONS_BDD);
+  //$mysql = mysql_connect(SGBD, LOGIN_SGBD, MOT_DE_PASSE_SGBD); mysql_select_db(SESSIONS_BDD, $mysql);
+  if(!$mysql)
+  {
+  	return false;
+  }
+  $result = true;
+  $mysql->query('DELETE FROM '.SESSIONS_TABLE.' WHERE ADDDATE(dernier_acces, INTERVAL '.$temps_de_validite.' SECOND) < NOW()')
+    or $result = false;
+  //mysql_query('DELETE FROM '.SESSIONS_TABLE.' WHERE ADDDATE(dernier_acces, INTERVAL '.$temps_de_validite.' SECOND) < NOW()', $mysql)
+    or $result = false;
+  $mysql->close(); //mysql_close($mysql);
+  return $result;
+}
+
+session_set_save_handler(
+  'ouvrir_session',
+  'fermer_session',
+  'lire_session',
+  'ecrire_session',
+  'detruire_session',
+  'verifier_validite_session'
+);
+
+session_start();
+
+// Maintenant on peut se servir des sessions sans modifications par rapport à avant...
+// C'est complètement transparent pour l'utilisateur.
+?>
+
+//////////////////////////////////////////////////////
