@@ -40,6 +40,9 @@ if (!empty($_GET['page'])) {
    elseif ($_GET['page'] === 'main') {
     include('main.php');
   }
+   elseif ($_GET['page'] === 'account') {
+    include('createAccountPage.php');
+  }
   elseif ($_GET['page'] === 'resultdisplay') {
     include('resultdisplay.php');
   }
