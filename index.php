@@ -43,6 +43,9 @@ if (!empty($_GET['page'])) {
   elseif ($_GET['page'] === 'resultdisplay') {
     include('resultdisplay.php');
   }
+  elseif ($_GET['page'] === 'account') {
+    include('createAccountPage.php');
+  }
   elseif ($_GET['page'] === 'deconnection')
     include('deconnection.php');
    }
