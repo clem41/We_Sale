@@ -13,6 +13,13 @@
   </ul>
 </div>
 <?php
+if(isset($_SESSION["isConnected"]))
+{
+  ?>
+  <form action ="index.php?page=connection" method = "post">
+    <input type="submit" value="deconnection">
+<?php
+}
 if (isset($_POST['username']) and isset($_POST['psw'])){
   $_SESSION["login"]=$_POST['username'];
   $_SESSION["password"]=$_POST['psw'];
@@ -26,6 +33,8 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
       $password=logIn($_SESSION["login"]);
       if($_SESSION["password"]==$password[0]['password']){
         echo 'successful connection';
+        session_start();
+        $_SESSION["isConnected"]=1;
                 
       }
       else{
@@ -39,18 +48,12 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
 }
 ?>
 <?php
-if (empty($_POST["deconnection"])) {
+if (isset($_POST["deconnection"])) {
   session_destroy();
   
 }
-if(empty($_SESSION["login"]))
-{
-  ?>
-  <form action ="index.php?page=connection" method = "post">
-    <input type="submit" value="deconnection">
-<?php
-}
-else{
+
+if(!isset($_SESSION["isConnected"])){
 ?>
 <form action="index.php?page=connection" method="post">
   <input type="Username" placeholder="Username" name="username">

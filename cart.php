@@ -35,7 +35,7 @@
 	echo" update of quantity done";
 }
 	?><?php
-	if(!isset($_SESSION)) {
+	if(!isset($_SESSION["isConnected"])) {
 		echo"You must log in to see your cart";
 	}
 	else{
@@ -107,7 +107,9 @@
 		<?php }
 		}
 	}
-}?>
+?>
 	<br>
 	<div class="productPrice">Subtotal: <?php echo($subtotal);?> USD</div>
 	<br><button class="buttonCartCheck" href="cart.php">Proceed to checkout</button>
+<?php }
+?>

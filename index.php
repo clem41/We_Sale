@@ -1,10 +1,6 @@
 <?php
 //TODO start session
 
-session_start();
-if (empty($_SESSION["login"])&& empty($_SESSION["psw"]))
-
-
 ?>
 <?php include_once 'database.php';
 
