@@ -1,5 +1,14 @@
 <?php
 //TODO start session
+ini_set('session.use_cookies', 0);
+ini_set('session.use_only_cookies', 0); //是否仅用cookie
+ini_set('session.use_trans_sid', 1); //是否自动url带上session id
+ini_set('session.name', 'sid');
+
+session_id($_GET[session_name()]);
+if(isset($_GET[session_name()])){
+session_start();
+}	
 
 ?>
 <?php include_once 'database.php';

@@ -20,6 +20,11 @@ if(isset($_SESSION["isConnected"]))
     <input type="submit" value="deconnection">
 <?php
 }
+if(isset($_GET[session_name()])){
+	echo '<a href="login_out.php">logged out</a>';
+
+	}
+	
 if (isset($_POST['username']) and isset($_POST['psw'])){
   $_SESSION["login"]=$_POST['username'];
   $_SESSION["password"]=$_POST['psw'];
@@ -33,8 +38,10 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
       $password=logIn($_SESSION["login"]);
       if($_SESSION["password"]==$password[0]['password']){
         echo 'successful connection';
-        session_start();
-        $_SESSION["isConnected"]=1;
+       		session_start();
+		$_SESSION['name']='admin';
+        echo '<a href="index.php">Please click here to start your shopping</a>';
+                
                 
       }
       else{
