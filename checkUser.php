@@ -33,6 +33,5 @@
   	echo 'please input the both name and password';
   	}
 ?>
-<?php include 'footer.php'?>
 </body>
 </html>

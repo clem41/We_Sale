@@ -12,7 +12,7 @@
 <body>
 		<link rel="stylesheet" href="cart.css" />
 
-			<?php 
+<?php 
 //Add a product in the cart if there is a redirection from a add to cart button
 			if(isset($_POST['submit'])){
 		addToCart($_POST["idProduct"]);
@@ -24,8 +24,17 @@
 		deleteProductFromCart($_POST["idProduct"],$_POST["idOrderProduct"]);
 		echo "A product was deleted";
 	}?>
-	<?php $listOfOrdersInCart = getOrderInCart();
+	<?php  
+	$listOfOrdersInCart = getOrderInCart();
 
+if (!isset($_GET[session_name()])) {
+	echo '</br>';
+	echo '</br>';
+	echo '</br>';
+	echo '</br>';
+	echo '</br>';
+    die('please connect first');
+}
 	if ($listOfOrdersInCart==NULL){
 		echo "Your cart is empty";
 	}

@@ -13,6 +13,11 @@
   </ul>
 </div>
 <?php
+if(isset($_GET[session_name()])){
+	echo '<a href="login_out.php">logged out</a>';
+
+	}
+	
 if (isset($_POST['username']) and isset($_POST['psw'])){
   $name=$_POST['username'];
   $psw=$_POST['psw'];
@@ -26,6 +31,10 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
       $password=logIn($name);
       if($psw==$password[0]['password']){
         echo 'successful connection';
+		
+		session_start();
+		$_SESSION['name']='hello';
+        echo '<a href="index.php">Please click here to start your shopping</a>';
                 
       }
       else{
@@ -41,7 +50,7 @@ if (isset($_POST['username']) and isset($_POST['psw'])){
 <?php
 
 if(isset($_POST["connection"]))
-{
+{session_destroy();
   ?>
   <form action ="index.php?page=connection" method = "post">
     <input type="submit" value="deconnection">

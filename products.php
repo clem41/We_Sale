@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div class="category">
-<?php if(isset($_GET['name'])){
+<?php 
+if(isset($_GET['name'])){
 	     $name=$_GET['name'];
 	}
 	else{$name="";}
@@ -79,6 +80,5 @@ foreach ($products as $product)
 <?php }break;?>
 <?php }?>
 
-<?php include 'footer.php'?>
 </body>
 </html>
